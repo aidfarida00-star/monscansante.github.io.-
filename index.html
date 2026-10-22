@@ -1,8 +1,13 @@
 <!doctype html>
+<!--
+  MonScan Santé — © 2026 L'éditeur de MonScan Santé. Tous droits réservés.
+  Copie, modification ou revente interdites sans autorisation écrite. Voir le fichier LICENSE.
+-->
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="copyright" content="© 2026 MonScan Santé. Tous droits réservés.">
 <meta name="theme-color" content="#0b4a36">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -67,6 +72,15 @@ html[lang="ar"] .brand{text-align:start}
 .langsel{margin-inline-start:auto;font:700 .9rem var(--f-body);border-radius:999px;padding:5px 10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff;cursor:pointer}
 .langsel option{color:#10241c;background:#fff}
 .switch select{font:700 .95rem var(--f-body);border-radius:10px;padding:6px 10px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+#updCard{margin-top:12px}
+.vpick{display:flex;flex-direction:column;gap:10px}
+.vpick label{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;font-weight:700}
+.vpick select{min-width:0;width:100%;font:700 .95rem var(--f-body);border-radius:10px;padding:8px 10px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+.vpick label:first-child{grid-template-columns:auto minmax(0,1fr)}
+.vpick input[type=range]{width:100%;accent-color:var(--accent)}
+.vpick output{font-variant-numeric:tabular-nums;min-width:3ch;text-align:end}
+.ns.hb{padding:6px 14px;font-weight:800;font-size:.92rem;color:#fff}
+.hb-label{background:var(--ok)}.hb-no{background:var(--bad)}.hb-check{background:var(--warn);color:#1c1300!important}.hb-none{background:var(--sunk);color:var(--ink)!important}
 .danger{border-color:var(--bad)!important;color:var(--bad)!important;background:transparent!important}
 .actions .btn[aria-pressed="true"]{background:var(--c1);border-color:var(--c1);color:#fff}
 .sharebox{display:flex;flex-wrap:wrap;gap:8px}
@@ -241,6 +255,10 @@ label.chip input:checked+span::before{content:"✓"}
   </nav>
 
   <!-- SCANNER -->
+  <div class="install" id="updCard" hidden>
+    <p data-i18n="upd_txt">Une nouvelle version de MonScan Santé est disponible.</p>
+    <button class="btn solid small" type="button" id="updBtn" data-i18n="upd_btn">Mettre à jour</button>
+  </div>
   <section class="panel" id="panel-scan">
     <div class="install" id="installCard" hidden>
       <p id="installTxt" data-i18n="install_txt">Installez MonScan Santé sur votre écran d'accueil.</p>
@@ -332,6 +350,12 @@ label.chip input:checked+span::before{content:"✓"}
       </div>
       <label class="switch" for="dangerVoice"><span data-i18n="dvoice_label">Voix d'alerte pour les produits à éviter</span> <input type="checkbox" id="dangerVoice"></label>
       <p class="hint" data-i18n="dvoice_hint">Après l'alarme, une voix dit « Attention ! » et nomme ce qui pose problème dans le produit.</p>
+      <p class="msg info" id="voiceInfo" hidden></p>
+      <div id="voicePick" class="vpick" hidden>
+        <label for="voiceSel"><span data-i18n="voice_choose">Voix</span><select id="voiceSel"></select></label>
+        <label for="rateRange"><span data-i18n="rate_label">Vitesse</span><input type="range" id="rateRange" min="0.6" max="1.3" step="0.05"><output id="rateOut"></output></label>
+        <p class="hint" data-i18n="voice_tip"></p>
+      </div>
       <div class="testrow"><button type="button" id="testVoice" data-i18n="dvoice_test" style="background:var(--bad)">Écouter la voix d'alerte</button></div>
     </div>
     <div class="card">
@@ -371,17 +395,17 @@ label.chip input:checked+span::before{content:"✓"}
     <p class="msg info" id="legalNote" data-i18n="legal_fr_only" hidden></p>
     <div class="card legal" id="mentions">
       <h3>Mentions légales</h3>
-      <p class="hint">Dernière mise à jour : 21 octobre 2026</p>
+      <p class="hint">Dernière mise à jour : 22 octobre 2026</p>
 
       <h4>Éditeur de l'application</h4>
-      <p>MonScan Santé est éditée par <mark class="todo">[Votre prénom et nom]</mark>, <mark class="todo">[micro-entrepreneur / particulier]</mark>.<br>
-      Adresse : <mark class="todo">[Votre adresse postale]</mark><br>
-      E-mail : <mark class="todo">[Votre adresse e-mail de contact]</mark><br>
-      SIRET : <mark class="todo">[Numéro SIRET, une fois l'entreprise créée]</mark></p>
-      <p>Directeur ou directrice de la publication : <mark class="todo">[Votre prénom et nom]</mark>.</p>
+      <p>MonScan Santé est éditée par un <b>particulier</b>, à titre non professionnel et sans activité commerciale.</p>
+      <p>Comme le permet l'article 6, III, 2 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'éditeur a choisi de ne pas rendre publics son nom et son adresse. Ses coordonnées ont été communiquées à l'hébergeur ci-dessous.</p>
+      <p>Pour contacter l'éditeur : <mark class="todo">[votre adresse e-mail de contact]</mark></p>
 
       <h4>Hébergement</h4>
-      <p><mark class="todo">[Nom de l'hébergeur, son adresse et son téléphone : à compléter une fois l'hébergeur définitif choisi]</mark></p>
+      <p>L'application est hébergée par <b>GitHub, Inc.</b> (service GitHub Pages)<br>
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+      Site : https://github.com · Contact : https://support.github.com</p>
 
       <h4>Données sur les produits</h4>
       <p>Les informations sur les produits (ingrédients, additifs, Nutri-Score, NOVA, photos) proviennent des bases collaboratives <b>Open Food Facts</b> et <b>Open Beauty Facts</b>, publiées sous licence Open Database License (ODbL). Ces informations sont saisies par des bénévoles et peuvent contenir des erreurs ou être incomplètes. Vérifiez toujours l'étiquette du produit.</p>
@@ -398,13 +422,13 @@ label.chip input:checked+span::before{content:"✓"}
 
     <div class="card legal" id="confidentialite">
       <h3>Politique de confidentialité</h3>
-      <p class="hint">Dernière mise à jour : 21 octobre 2026</p>
+      <p class="hint">Dernière mise à jour : 22 octobre 2026</p>
 
       <h4>En résumé</h4>
       <p><b>Vos informations de santé ne quittent jamais votre téléphone.</b> MonScan Santé n'a pas de compte utilisateur, pas de serveur qui garde vos données, pas de publicité et pas d'outil qui suit votre navigation.</p>
 
       <h4>Responsable</h4>
-      <p><mark class="todo">[Votre prénom et nom]</mark>, joignable à <mark class="todo">[votre adresse e-mail]</mark>.</p>
+      <p>L'éditeur de l'application, un particulier, joignable à <mark class="todo">[votre adresse e-mail de contact]</mark>.</p>
 
       <h4>Ce qui reste sur votre téléphone</h4>
       <p>Les informations suivantes sont enregistrées <b>uniquement dans la mémoire de votre navigateur</b>, sur votre appareil :</p>
@@ -434,7 +458,7 @@ label.chip input:checked+span::before{content:"✓"}
       <p>Vos données restent sur votre appareil jusqu'à ce que vous les effaciez. Pour tout supprimer, utilisez le bouton <b>« Effacer toutes mes données »</b> dans « Mon profil », ou effacez les données du site dans votre navigateur.</p>
 
       <h4>Vos droits</h4>
-      <p>Selon le RGPD, vous avez le droit d'accéder à vos données, de les corriger et de les effacer. Comme elles sont uniquement sur votre téléphone, vous pouvez le faire vous-même à tout moment depuis « Mon profil ». Pour toute question : <mark class="todo">[votre adresse e-mail]</mark>. Vous pouvez aussi déposer une réclamation auprès de la <b>CNIL</b> (www.cnil.fr).</p>
+      <p>Selon le RGPD, vous avez le droit d'accéder à vos données, de les corriger et de les effacer. Comme elles sont uniquement sur votre téléphone, vous pouvez le faire vous-même à tout moment depuis « Mon profil ». Pour toute question : <mark class="todo">[votre adresse e-mail de contact]</mark>. Vous pouvez aussi déposer une réclamation auprès de la <b>CNIL</b> (www.cnil.fr).</p>
 
       <h4>Enfants</h4>
       <p>L'application peut être utilisée pour un enfant, mais elle est faite pour être réglée par un adulte.</p>
@@ -447,6 +471,8 @@ label.chip input:checked+span::before{content:"✓"}
 
   <p class="disclaimer" data-i18n="disclaimer">MonScan Santé informe à partir des ingrédients déclarés (bases collaboratives Open Food Facts et Open Beauty Facts). Ce n'est pas un avis médical : en cas de doute, demandez à votre médecin ou pharmacien.</p>
   <p class="disclaimer footlinks"><button type="button" data-info="mentions" data-i18n="legal_link">Mentions légales</button> · <button type="button" data-info="confidentialite" data-i18n="privacy">Confidentialité</button></p>
+  <p class="disclaimer"><b id="appVersion">Version 1.7 · Halal</b></p>
+  <p class="disclaimer" data-i18n="copyright">© 2026 MonScan Santé. Tous droits réservés. Toute copie ou revente de l'application, de son nom, de son logo ou de ses textes est interdite sans autorisation.</p>
 </main>
 
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
@@ -548,7 +574,44 @@ fr:{
  hi_sat:"Graisses saturées élevées", mid_sat:"Graisses saturées modérées",
  hi_msg:"{v} g pour 100 g, au-dessus du seuil « élevé » ({hi} g).", mid_msg:"{v} g pour 100 g.",
  cu_name:"Dans votre liste : {x}", cu_msg:"Vous avez demandé à éviter cet ingrédient.",
- cu_tr_msg:"L'emballage signale de possibles traces de cet ingrédient.", no_name_prod:"Produit sans nom"
+ cu_tr_msg:"L'emballage signale de possibles traces de cet ingrédient.", no_name_prod:"Produit sans nom",
+ voice_ok:"Voix utilisée : {name}.",
+ voice_missing:"Aucune voix française n'est installée sur ce téléphone : l'alerte vocale ne peut pas parler dans cette langue.",
+ voice_howto_android:"Pour l'installer sur Android : Paramètres → Système (ou Gestion globale) → Langue et saisie → Synthèse vocale → Moteur Google → Installer les données vocales → choisissez la langue. Puis rouvrez l'application.",
+ voice_howto_ios:"Pour l'installer sur iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → choisissez la langue et téléchargez une voix. Puis rouvrez l'application.",
+ voice_unsupported:"Ce navigateur ne sait pas lire à voix haute. Essayez avec Chrome (Android) ou Safari (iPhone).",
+ voice_wait:"Recherche des voix du téléphone…",
+ upd_txt:"Une nouvelle version de MonScan Santé est disponible.",
+ upd_btn:"Mettre à jour",
+ halal_pork_n:"Porc",
+ halal_pork_m:"Contient du porc ou un dérivé du porc : non halal.",
+ halal_gelp_n:"Gélatine de porc",
+ halal_gel_n:"Gélatine d'origine inconnue",
+ halal_gel_m:"L'origine de la gélatine n'est pas précisée. Elle vient souvent du porc : à éviter sans label halal.",
+ halal_gelb_n:"Gélatine bovine",
+ halal_gelb_m:"Gélatine de bœuf : halal seulement si l'animal a été abattu selon le rite (label halal).",
+ halal_alc_n:"Alcool",
+ halal_alc_m:"Contient de l'alcool ou une boisson alcoolisée : non halal.",
+ halal_add_n:"Additif d'origine animale possible",
+ halal_add_m:"Cet additif peut être fabriqué à partir d'animaux, parfois du porc. Vérifiez le label ou demandez au fabricant.",
+ halal_carm_n:"Carmin (cochenille)",
+ halal_carm_m:"Colorant fabriqué à partir d'insectes : les avis religieux divergent.",
+ halal_meat_n:"Viande sans label halal",
+ halal_meat_m:"Le produit contient de la viande, mais aucun label halal n'est indiqué : le mode d'abattage ne peut pas être vérifié.",
+ halal_label_n:"Label halal",
+ halal_label_m:"Le produit indique un label halal dans la base Open Food Facts. Vérifiez aussi le logo sur l'emballage.",
+ hb_label:"✓ Label halal",
+ hb_no:"✕ Non halal",
+ hb_check:"? Halal à vérifier",
+ hb_none:"Aucun ingrédient interdit repéré",
+ halal_note:"MonScan Santé ne certifie pas qu'un produit est halal. Seul le label d'un organisme de certification le garantit.",
+ copyright:"© 2026 MonScan Santé. Tous droits réservés. Toute copie ou revente de l'application, de son nom, de son logo ou de ses textes est interdite sans autorisation.",
+ voice_choose:"Voix",
+ voice_auto:"Automatique (la plus naturelle)",
+ rate_label:"Vitesse",
+ voice_online:" · en ligne",
+ voice_tip:"Essayez plusieurs voix : elles sont souvent très différentes. Les voix « en ligne » sont en général plus naturelles, mais demandent internet. Sur iPhone, téléchargez une voix « améliorée » ou « premium » dans les réglages pour un meilleur rendu.",
+ voice_sample:"Bonjour, je suis la voix de MonScan Santé."
 },
 en:{
  tagline:"Scan a product and see what matters for your health.",
@@ -641,7 +704,44 @@ en:{
  hi_sat:"High saturated fat", mid_sat:"Moderate saturated fat",
  hi_msg:"{v} g per 100 g, above the “high” threshold ({hi} g).", mid_msg:"{v} g per 100 g.",
  cu_name:"In your list: {x}", cu_msg:"You asked to avoid this ingredient.",
- cu_tr_msg:"The package mentions possible traces of this ingredient.", no_name_prod:"Unnamed product"
+ cu_tr_msg:"The package mentions possible traces of this ingredient.", no_name_prod:"Unnamed product",
+ voice_ok:"Voice used: {name}.",
+ voice_missing:"No English voice is installed on this phone, so the voice alert can't speak in this language.",
+ voice_howto_android:"To install one on Android: Settings → System (or General management) → Language and input → Text-to-speech → Google engine → Install voice data → choose the language. Then reopen the app.",
+ voice_howto_ios:"To install one on iPhone: Settings → Accessibility → Spoken Content → Voices → choose the language and download a voice. Then reopen the app.",
+ voice_unsupported:"This browser can't read aloud. Try Chrome (Android) or Safari (iPhone).",
+ voice_wait:"Looking for the phone's voices…",
+ upd_txt:"A new version of MonScan Santé is available.",
+ upd_btn:"Update",
+ halal_pork_n:"Pork",
+ halal_pork_m:"Contains pork or a pork derivative: not halal.",
+ halal_gelp_n:"Pork gelatine",
+ halal_gel_n:"Gelatine of unknown origin",
+ halal_gel_m:"The gelatine's origin isn't stated. It often comes from pork: avoid without a halal label.",
+ halal_gelb_n:"Beef gelatine",
+ halal_gelb_m:"Beef gelatine: halal only if the animal was slaughtered according to the rite (halal label).",
+ halal_alc_n:"Alcohol",
+ halal_alc_m:"Contains alcohol or an alcoholic drink: not halal.",
+ halal_add_n:"Possibly animal-derived additive",
+ halal_add_m:"This additive can be made from animals, sometimes pork. Check the label or ask the manufacturer.",
+ halal_carm_n:"Carmine (cochineal)",
+ halal_carm_m:"Colouring made from insects: religious opinions differ.",
+ halal_meat_n:"Meat without a halal label",
+ halal_meat_m:"The product contains meat but shows no halal label: the slaughter method can't be checked.",
+ halal_label_n:"Halal label",
+ halal_label_m:"The product lists a halal label in the Open Food Facts database. Also check the logo on the package.",
+ hb_label:"✓ Halal label",
+ hb_no:"✕ Not halal",
+ hb_check:"? Halal to check",
+ hb_none:"No forbidden ingredient found",
+ halal_note:"MonScan Santé doesn't certify that a product is halal. Only a certification body's label guarantees it.",
+ copyright:"© 2026 MonScan Santé. All rights reserved. Copying or reselling the app, its name, logo or texts is forbidden without permission.",
+ voice_choose:"Voice",
+ voice_auto:"Automatic (most natural)",
+ rate_label:"Speed",
+ voice_online:" · online",
+ voice_tip:"Try several voices: they often sound very different. “Online” voices usually sound more natural but need internet. On iPhone, download an “Enhanced” or “Premium” voice in Settings for better quality.",
+ voice_sample:"Hello, I am the voice of MonScan Santé."
 },
 ar:{
  tagline:"امسح المنتج واعرف ما يهمّ صحتك.",
@@ -734,7 +834,44 @@ ar:{
  hi_sat:"دهون مشبعة مرتفعة", mid_sat:"دهون مشبعة متوسطة",
  hi_msg:"{v} غ لكل 100 غ، فوق حدّ «المرتفع» ({hi} غ).", mid_msg:"{v} غ لكل 100 غ.",
  cu_name:"في قائمتك: {x}", cu_msg:"طلبتَ تجنّب هذا المكوّن.",
- cu_tr_msg:"تشير العبوة إلى آثار محتملة لهذا المكوّن.", no_name_prod:"منتج بلا اسم"
+ cu_tr_msg:"تشير العبوة إلى آثار محتملة لهذا المكوّن.", no_name_prod:"منتج بلا اسم",
+ voice_ok:"الصوت المستخدم: {name}.",
+ voice_missing:"لا يوجد صوت عربي مثبّت على هذا الهاتف، لذلك لا يستطيع التنبيه الصوتي التحدّث بهذه اللغة.",
+ voice_howto_android:"لتثبيته على Android: الإعدادات ← النظام (أو الإدارة العامة) ← اللغة والإدخال ← تحويل النص إلى كلام ← محرّك Google ← تثبيت البيانات الصوتية ← اختر اللغة العربية. ثم أعد فتح التطبيق.",
+ voice_howto_ios:"لتثبيته على iPhone: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← اختر العربية ونزّل صوتاً. ثم أعد فتح التطبيق.",
+ voice_unsupported:"هذا المتصفح لا يستطيع القراءة بصوت عالٍ. جرّب Chrome على Android أو Safari على iPhone.",
+ voice_wait:"جارٍ البحث عن أصوات الهاتف…",
+ upd_txt:"يتوفّر إصدار جديد من MonScan Santé.",
+ upd_btn:"تحديث",
+ halal_pork_n:"لحم الخنزير",
+ halal_pork_m:"يحتوي على لحم الخنزير أو أحد مشتقاته: غير حلال.",
+ halal_gelp_n:"جيلاتين الخنزير",
+ halal_gel_n:"جيلاتين مجهول المصدر",
+ halal_gel_m:"مصدر الجيلاتين غير محدّد، وغالباً ما يكون من الخنزير: يُتجنّب دون شهادة حلال.",
+ halal_gelb_n:"جيلاتين بقري",
+ halal_gelb_m:"جيلاتين بقري: حلال فقط إذا ذُبح الحيوان وفق الشريعة (شهادة حلال).",
+ halal_alc_n:"الكحول",
+ halal_alc_m:"يحتوي على الكحول أو مشروب كحولي: غير حلال.",
+ halal_add_n:"مادة مضافة قد تكون من أصل حيواني",
+ halal_add_m:"قد تُصنع هذه المادة المضافة من الحيوانات، وأحياناً من الخنزير. تحقّق من الشهادة أو اسأل الشركة المصنّعة.",
+ halal_carm_n:"الكارمين (القرمز)",
+ halal_carm_m:"ملوّن مصنوع من الحشرات: تختلف الآراء الفقهية حوله.",
+ halal_meat_n:"لحم دون شهادة حلال",
+ halal_meat_m:"يحتوي المنتج على لحم دون أي شهادة حلال: لا يمكن التحقّق من طريقة الذبح.",
+ halal_label_n:"شهادة حلال",
+ halal_label_m:"يُشير المنتج إلى شهادة حلال في قاعدة Open Food Facts. تحقّق أيضاً من الشعار على العبوة.",
+ hb_label:"✓ شهادة حلال",
+ hb_no:"✕ غير حلال",
+ hb_check:"؟ يجب التحقّق من الحلال",
+ hb_none:"لم يُعثر على مكوّن محرّم",
+ halal_note:"لا يشهد MonScan Santé بأن المنتج حلال. وحدها شهادة جهة اعتماد تضمن ذلك.",
+ copyright:"© 2026 MonScan Santé. جميع الحقوق محفوظة. يُمنع نسخ التطبيق أو اسمه أو شعاره أو نصوصه أو إعادة بيعها دون إذن.",
+ voice_choose:"الصوت",
+ voice_auto:"تلقائي (الأكثر طبيعية)",
+ rate_label:"السرعة",
+ voice_online:" · عبر الإنترنت",
+ voice_tip:"جرّب عدة أصوات: غالباً ما تختلف كثيراً. الأصوات «عبر الإنترنت» تكون عادةً أكثر طبيعية لكنها تحتاج إلى الإنترنت. على iPhone، نزّل صوتاً «محسّناً» أو «مميّزاً» من الإعدادات للحصول على جودة أفضل.",
+ voice_sample:"مرحباً، أنا صوت تطبيق MonScan Santé."
 }};
 function t(k,v){
   let s=T[LANG]&&T[LANG][k]; if(s==null) s=T.fr[k]; if(s==null) s=k;
@@ -743,8 +880,8 @@ function t(k,v){
 }
 /* Situations de santé et groupes */
 const PL = {
- en:{diabete:"Diabetes",hypertension:"High blood pressure",cholesterol:"Cholesterol",goutte:"Gout (uric acid)",cancer:"Cancer or history of cancer",reins:"Weak kidneys",asthme:"Asthma",grossesse:"Pregnancy / breastfeeding",enfants:"For a child",gluten:"Gluten",lait:"Milk / lactose",arachide:"Peanuts and tree nuts",oeuf:"Egg",soja:"Soy",sesame:"Sesame",poisson:"Fish",crustaces:"Crustaceans",mollusques:"Molluscs",celeri:"Celery",moutarde:"Mustard",lupin:"Lupin",peau:"Sensitive skin / eczema",vegetarien:"Vegetarian",perso:"Personal list"},
- ar:{diabete:"السكري",hypertension:"ارتفاع ضغط الدم",cholesterol:"الكوليسترول",goutte:"النقرس (حمض اليوريك)",cancer:"السرطان أو سابقة إصابة",reins:"ضعف الكلى",asthme:"الربو",grossesse:"الحمل / الرضاعة",enfants:"لطفل",gluten:"الغلوتين",lait:"الحليب / اللاكتوز",arachide:"الفول السوداني والمكسّرات",oeuf:"البيض",soja:"الصويا",sesame:"السمسم",poisson:"السمك",crustaces:"القشريات",mollusques:"الرخويات",celeri:"الكرفس",moutarde:"الخردل",lupin:"الترمس",peau:"بشرة حسّاسة / إكزيما",vegetarien:"نباتي",perso:"القائمة الشخصية"}
+ en:{diabete:"Diabetes",hypertension:"High blood pressure",cholesterol:"Cholesterol",goutte:"Gout (uric acid)",cancer:"Cancer or history of cancer",reins:"Weak kidneys",asthme:"Asthma",grossesse:"Pregnancy / breastfeeding",enfants:"For a child",gluten:"Gluten",lait:"Milk / lactose",arachide:"Peanuts and tree nuts",oeuf:"Egg",soja:"Soy",sesame:"Sesame",poisson:"Fish",crustaces:"Crustaceans",mollusques:"Molluscs",celeri:"Celery",moutarde:"Mustard",lupin:"Lupin",peau:"Sensitive skin / eczema",vegetarien:"Vegetarian",halal:"Halal",perso:"Personal list"},
+ ar:{diabete:"السكري",hypertension:"ارتفاع ضغط الدم",cholesterol:"الكوليسترول",goutte:"النقرس (حمض اليوريك)",cancer:"السرطان أو سابقة إصابة",reins:"ضعف الكلى",asthme:"الربو",grossesse:"الحمل / الرضاعة",enfants:"لطفل",gluten:"الغلوتين",lait:"الحليب / اللاكتوز",arachide:"الفول السوداني والمكسّرات",oeuf:"البيض",soja:"الصويا",sesame:"السمسم",poisson:"السمك",crustaces:"القشريات",mollusques:"الرخويات",celeri:"الكرفس",moutarde:"الخردل",lupin:"الترمس",peau:"بشرة حسّاسة / إكزيما",vegetarien:"نباتي",halal:"حلال",perso:"القائمة الشخصية"}
 };
 const GL = {
  en:{"Santé":"Health","Moments de vie":"Life stages","Allergies alimentaires":"Food allergies","Peau et choix":"Skin and choices"},
@@ -826,7 +963,7 @@ const PROFILS = [
   {g:"Santé", items:[["diabete","Diabète"],["hypertension","Tension élevée"],["cholesterol","Cholestérol"],["goutte","Goutte (acide urique)"],["cancer","Cancer ou antécédent"],["reins","Reins fragiles"],["asthme","Asthme"]]},
   {g:"Moments de vie", items:[["grossesse","Grossesse / allaitement"],["enfants","Pour un enfant"]]},
   {g:"Allergies alimentaires", items:[["gluten","Gluten"],["lait","Lait / lactose"],["arachide","Arachides et fruits à coque"],["oeuf","Œuf"],["soja","Soja"],["sesame","Sésame"],["poisson","Poisson"],["crustaces","Crustacés"],["mollusques","Mollusques"],["celeri","Céleri"],["moutarde","Moutarde"],["lupin","Lupin"]]},
-  {g:"Peau et choix", items:[["peau","Peau sensible / eczéma"],["vegetarien","Végétarien"]]}
+  {g:"Peau et choix", items:[["peau","Peau sensible / eczéma"],["vegetarien","Végétarien"],["halal","Halal"]]}
 ];
 const PNAME = Object.fromEntries(PROFILS.flatMap(g=>g.items));
 PNAME.perso = "Liste perso";
@@ -987,6 +1124,43 @@ function analyse(prod){
     rule("cholesterol",n.sat,5,1.5,"hi_sat","mid_sat");
   }
 
+  let halal=null;
+  if(profil.includes("halal") && type!=="beauty"){
+    const labels=(prod.labels||[]).map(x=>String(x).toLowerCase());
+    const hasLabel=labels.some(l=>/(^|:)halal/.test(l));
+    const hf=[];
+    const H=(nk,mk,lvl,code)=>hf.push({code:code||"",name:t(nk),item:t(nk),lvl,msg:t(mk),who:["halal"]});
+    const noPoultryHam=text.replace(/jambon (?=(de |d')?(dinde|volaille|poulet))/g,"");
+    const PORK=["porc","porcin","porcine","lard","lardon","lardons","saindoux","couenne","bacon","pancetta","chorizo","saucisson","coppa","rillettes","pork","pig","jambon"];
+    const porkGel=/gelatine (de |d')?porc|gelatine porcine/.test(text);
+    if(!porkGel && PORK.some(k=>hasKw(noPoultryHam,k))) H("halal_pork_n","halal_pork_m",2);
+    if(porkGel) H("halal_gelp_n","halal_pork_m",2);
+    else if(/gelatine (de |d')?(boeuf|bovine|bovin)/.test(text)){ if(!hasLabel) H("halal_gelb_n","halal_gelb_m",1); }
+    else if(hasKw(text,"gelatine") && !/gelatine (de |d')?(poisson|vegetale)|gelatine halal/.test(text)){ if(!hasLabel) H("halal_gel_n","halal_gel_m",1); }
+    else if(codes.has("e441") && !hasLabel) H("halal_gel_n","halal_gel_m",1,"E441");
+    const ALC=["alcool","rhum","liqueur","kirsch","cognac","biere","whisky","vodka","calvados","armagnac","marsala","vin blanc","vin rouge","vin de","au vin","cidre","champagne","amaretto","grand marnier"];
+    const txtNoFree=text.replace(/(biere|vin|cidre|champagne)?\s*sans alcool/g," ");
+    if(ALC.some(k=>hasKw(txtNoFree,k))) H("halal_alc_n","halal_alc_m",2);
+    if(!hasLabel){
+      const ANIM=["e471","e472","e473","e474","e475","e477","e481","e482","e542","e904","e920"];
+      const hitA=[...codes].filter(c=>ANIM.some(a=>c===a||(c.startsWith(a)&&/^[a-z]$/.test(c.slice(a.length)))));
+      if(hitA.length && !/origine vegetale/.test(text)) H("halal_add_n","halal_add_m",1,hitA.join(", ").toUpperCase());
+      if(codes.has("e120")||hasKw(text,"carmin")||hasKw(text,"cochenille")) H("halal_carm_n","halal_carm_m",1,codes.has("e120")?"E120":"");
+      const MEAT=["viande","poulet","boeuf","dinde","agneau","veau","volaille","canard","mouton"];
+      const meatCat=(prod.cats||[]).some(c=>/meat|poultr|charcuter|sausage/.test(c));
+      const meatTxt=noPoultryHam.replace(/gelatine (de |d')?[a-z]+/g," ");
+      if(meatCat || MEAT.some(k=>hasKw(meatTxt,k))) H("halal_meat_n","halal_meat_m",1);
+    } else {
+      H("halal_label_n","halal_label_m",0);
+    }
+    const hmax=hf.reduce((m,f)=>Math.max(m,f.lvl),0);
+    halal = hmax===2 ? "no" : hasLabel ? "label" : hmax===1 ? "check" : "none";
+    /* évite de répéter l'alcool et la gélatine en simple « info » */
+    const dupNames=[dbL(DB.find(d=>d.n==="Alcool")).n, dbL(DB.find(d=>d.n==="Gélatine")).n];
+    for(let i=finds.length-1;i>=0;i--) if(!finds[i].who.length && dupNames.includes(finds[i].item)) finds.splice(i,1);
+    finds.push(...hf);
+  }
+
   custom.forEach(c=>{
     const k=norm(c).trim(); if(!k) return;
     if(hasKw(text,k)) finds.push({code:"",name:t("cu_name",{x:c}),item:c,lvl:2,msg:t("cu_msg"),who:["perso"]});
@@ -996,7 +1170,7 @@ function analyse(prod){
   const others=[...codes].filter(c=>!used.has(c)).sort();
   finds.sort((a,b)=>b.lvl-a.lvl || (b.who.length-a.who.length));
   const max = finds.reduce((m,f)=>Math.max(m,f.lvl),0);
-  return {finds,others,max,nAdd:codes.size};
+  return {finds,others,max,nAdd:codes.size,halal};
 }
 const fmt=v=>{const s=(Math.round(v*10)/10).toString(); return LANG==="fr"?s.replace(".",","):s;};
 
@@ -1054,7 +1228,7 @@ async function getJSON(url,ms){
   finally{clearTimeout(t)}
 }
 const num=v=>(v===undefined||v===null||v==="")?null:Number(v);
-const FIELDS="code,product_name,product_name_fr,product_name_en,product_name_ar,brands,ingredients_text_fr,ingredients_text,additives_tags,allergens_tags,traces_tags,nutriments,image_front_small_url,nutriscore_grade,nova_group";
+const FIELDS="code,product_name,product_name_fr,product_name_en,product_name_ar,brands,ingredients_text_fr,ingredients_text,additives_tags,allergens_tags,traces_tags,nutriments,image_front_small_url,nutriscore_grade,nova_group,labels_tags";
 /* Mémoire hors ligne : les derniers produits trouvés restent consultables sans internet */
 let pcache = store.get("pc_cache",{});
 function cachePut(p){ if(!p.code) return; pcache[p.code]={...p,t:Date.now()};
@@ -1065,7 +1239,7 @@ function toProd(p,type,code){
   return {code:code||p.code,type,name:p["product_name_"+LANG]||p.product_name_fr||p.product_name||t("no_name_prod"),brand:p.brands||"",
     ing:p.ingredients_text_fr||p.ingredients_text||"",img:p.image_front_small_url,
     addTags:p.additives_tags,allTags:p.allergens_tags,traceTags:p.traces_tags,cats:p.categories_tags||[],
-    ns:/^[a-e]$/.test(p.nutriscore_grade||"")?p.nutriscore_grade:null, nova:[1,2,3,4].includes(+p.nova_group)?+p.nova_group:null,
+    labels:p.labels_tags||[], ns:/^[a-e]$/.test(p.nutriscore_grade||"")?p.nutriscore_grade:null, nova:[1,2,3,4].includes(+p.nova_group)?+p.nova_group:null,
     nut:type==="food"?{sugars:num(nu.sugars_100g),salt:num(nu.salt_100g),sat:num(nu["saturated-fat_100g"])}:null};
 }
 
@@ -1183,10 +1357,12 @@ function render(prod,opts){
   const NSC={a:"#038141",b:"#85bb2f",c:"#e5b700",d:"#ee8100",e:"#e63e11"};
   const NOVC={1:"#1a9a3b",2:"#c9a400",3:"#e86b00",4:"#d42020"};
   const NOVL={1:t("nova1"),2:t("nova2"),3:t("nova3"),4:t("nova4")};
-  const badges = (prod.ns||prod.nova)?`<div class="badges">
+  const HBC={label:"var(--ok)",no:"var(--bad)",check:"var(--warn)",none:"var(--sunk)"};
+  const hb = r.halal?`<span class="ns hb hb-${r.halal}">${t("hb_"+r.halal)}</span>`:"";
+  const badges = (prod.ns||prod.nova||hb)?`<div class="badges">${hb}
       ${prod.ns?`<span class="ns"><b style="background:${NSC[prod.ns]}">${prod.ns.toUpperCase()}</b>Nutri-Score</span>`:""}
       ${prod.nova?`<span class="ns"><b style="background:${NOVC[prod.nova]}">${prod.nova}</b>NOVA · ${NOVL[prod.nova]}</span>`:""}
-    </div>`:"";
+    </div>${r.halal?`<p class="hint">${t("halal_note")}</p>`:""}`:"";
   const isFav = !!prod.code && favs.some(f=>f.code===prod.code);
   const actions = `<div class="actions">
       ${prod.code&&!prod.example?`<button type="button" class="btn" id="favBtn" aria-pressed="${isFav}">${isFav?t("fav_on"):t("fav_off")}</button>`:""}
@@ -1330,15 +1506,72 @@ function shareText(prod,r){
     + (top?`\n${top}`:"") + (prod.code&&!prod.example?`\n${t("sh_code",{code:prod.code})}`:"");
 }
 /* ---------- Lecture à voix haute ---------- */
-function speak(t){
+let VOICES=[], voicesLoaded=false;
+const WANT={fr:"fr-fr",en:"en-gb",ar:"ar-sa"};
+function loadVoices(){
+  try{ VOICES=speechSynthesis.getVoices()||[]; if(VOICES.length) voicesLoaded=true; }catch(e){}
+  updateVoiceInfo();
+}
+let voicePref = store.get("pc_voice", {});
+let voiceRate = store.get("pc_rate", 0.95);
+const lcv=v=>(v.lang||"").replace("_","-").toLowerCase();
+function langVoices(){ return VOICES.filter(v=>lcv(v).startsWith(LANG)); }
+function voiceScore(v){
+  let s=0;
+  if(/natural|neural|premium|enhanced|améliorée|amélioré|wavenet|online/i.test(v.name)) s+=40;
+  if(/google/i.test(v.name)) s+=20;
+  if(!v.localService) s+=10;
+  if(lcv(v)===WANT[LANG]) s+=5;
+  if(/compact|espeak/i.test(v.name)) s-=30;
+  return s;
+}
+function pickVoice(){
+  const list=langVoices();
+  if(!list.length) return null;
+  const want=voicePref[LANG];
+  if(want){ const v=list.find(x=>x.name===want); if(v) return v; }
+  return list.slice().sort((a,b)=>voiceScore(b)-voiceScore(a))[0];
+}
+function renderVoicePick(){
+  const box=document.getElementById("voicePick"), sel=document.getElementById("voiceSel");
+  const list=langVoices();
+  if(!list.length){ box.hidden=true; return; }
+  box.hidden=false;
+  const cur=voicePref[LANG]||"";
+  sel.innerHTML=`<option value="">${esc(t("voice_auto"))}</option>`+list.slice().sort((a,b)=>voiceScore(b)-voiceScore(a))
+    .map(v=>`<option value="${esc(v.name)}" ${v.name===cur?"selected":""}>${esc(v.name)}${v.localService?"":esc(t("voice_online"))}</option>`).join("");
+  const rr=document.getElementById("rateRange"); rr.value=voiceRate;
+  document.getElementById("rateOut").textContent="×"+fmt(voiceRate);
+}
+function updateVoiceInfo(){
+  const el=document.getElementById("voiceInfo"); if(!el) return;
+  el.hidden=false; el.className="msg info";
+  if(!("speechSynthesis" in window)){ el.className="msg err"; el.textContent=t("voice_unsupported"); return; }
+  if(!voicesLoaded){ el.textContent=t("voice_wait"); document.getElementById("voicePick").hidden=true; return; }
+  const v=pickVoice();
+  renderVoicePick();
+  if(v){ el.textContent=t("voice_ok",{name:v.name}); return; }
+  const ios=/iphone|ipad|ipod|macintosh/i.test(navigator.userAgent);
+  el.className="msg err"; el.textContent=t("voice_missing")+" "+t(ios?"voice_howto_ios":"voice_howto_android");
+}
+if("speechSynthesis" in window){
+  loadVoices();
+  try{ speechSynthesis.addEventListener("voiceschanged",loadVoices); }catch(e){ speechSynthesis.onvoiceschanged=loadVoices; }
+  setTimeout(loadVoices,600); setTimeout(()=>{ loadVoices(); voicesLoaded=true; updateVoiceInfo(); },3000);
+}
+function speak(txt){
   try{
     if(!("speechSynthesis" in window)) return;
+    if(!voicesLoaded) loadVoices();
     speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(t); u.lang={fr:"fr-FR",en:"en-GB",ar:"ar-SA"}[LANG]; u.rate=0.95;
-    const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith(LANG)); if(v) u.voice=v;
-    speechSynthesis.speak(u);
+    const u=new SpeechSynthesisUtterance(txt); u.rate=voiceRate;
+    const v=pickVoice();
+    if(v){ u.voice=v; u.lang=v.lang; } else { u.lang={fr:"fr-FR",en:"en-GB",ar:"ar-SA"}[LANG]; }
+    /* Chrome Android coupe parfois la parole : petite relance */
+    setTimeout(()=>{ try{ speechSynthesis.resume(); speechSynthesis.speak(u); }catch(e){} }, 60);
   }catch(e){}
 }
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden && "speechSynthesis" in window) loadVoices(); });
 function speechFor(prod,r){
   const m=member().name;
   const v=r.max===2?t("sp_avoid"):r.max===1?t("sp_caution"):t("sp_good");
@@ -1468,7 +1701,17 @@ if(canInstallHere && !standalone && !installDismissed() && /iphone|ipad|ipod/i.t
 
 /* ---------- Appli installable (version en ligne) ---------- */
 if("serviceWorker" in navigator && location.protocol==="https:" && /netlify\.app$|\.[a-z]{2,}$/.test(location.hostname) && !/claude/.test(location.hostname)){
-  window.addEventListener("load",()=>{ navigator.serviceWorker.register("sw.js").catch(()=>{}); });
+  let hadCtrl=!!navigator.serviceWorker.controller;
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("sw.js").then(reg=>{ try{ reg.update(); }catch(e){} }).catch(()=>{});
+  });
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{
+    if(hadCtrl) document.getElementById("updCard").hidden=false;
+    hadCtrl=true;
+  });
+  document.addEventListener("visibilitychange",()=>{
+    if(!document.hidden) navigator.serviceWorker.getRegistration().then(r=>{ if(r) r.update(); }).catch(()=>{});
+  });
 }
 
 /* ---------- Onglets ---------- */
@@ -1636,6 +1879,15 @@ document.getElementById("camBtn").addEventListener("click",async()=>{
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden) stopCamera();});
 
+document.getElementById("updBtn").addEventListener("click",()=>location.reload());
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  if(e.target.value) voicePref[LANG]=e.target.value; else delete voicePref[LANG];
+  store.set("pc_voice",voicePref); updateVoiceInfo(); speak(t("voice_sample"));
+});
+document.getElementById("rateRange").addEventListener("input",e=>{
+  voiceRate=+e.target.value; document.getElementById("rateOut").textContent="×"+fmt(voiceRate);
+});
+document.getElementById("rateRange").addEventListener("change",()=>{ store.set("pc_rate",voiceRate); speak(t("voice_sample")); });
 /* ---------- Changer de langue ---------- */
 function applyStatic(){
   const h=document.documentElement; h.lang=LANG; h.dir=LANG==="ar"?"rtl":"ltr";
@@ -1650,7 +1902,7 @@ function setLang(l){
   LANG=l; store.set("pc_lang",l);
   fam.members.forEach(m=>{ if(["Moi","Me","أنا"].includes(m.name)) m.name=t("me"); }); saveFam();
   try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
-  applyStatic(); renderExamples(); renderProfil(); renderHist(); renderFavs(); hideStatus();
+  applyStatic(); renderExamples(); renderProfil(); renderHist(); renderFavs(); hideStatus(); updateVoiceInfo();
   if(current){ if(current.example) current.name=exname(current.code,EXEMPLES[current.code].name); render(current,{noHist:true,silent:true}); }
   else renderWelcome();
 }

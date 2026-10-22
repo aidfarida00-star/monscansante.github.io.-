@@ -1,0 +1,32 @@
+MonScan Santé
+Copyright (c) 2026 L'éditeur de MonScan Santé. Tous droits réservés.
+
+FRANÇAIS
+Ce dépôt contient l'application MonScan Santé : son code, sa présentation,
+son nom, son logo, ses icônes et ses textes (dont les explications santé).
+Ils sont protégés par le droit d'auteur (Code de la propriété intellectuelle).
+
+Le fait que ce dépôt soit public ne donne AUCUN droit de réutilisation.
+Sans autorisation écrite de l'éditeur, il est interdit de copier, modifier,
+publier, distribuer, revendre ou proposer cette application ou une partie de
+celle-ci, y compris sous un autre nom.
+
+Pour toute demande d'autorisation : voir la page « Mentions légales » de
+l'application.
+
+ENGLISH
+This repository contains the MonScan Santé application: its code, design,
+name, logo, icons and texts (including the health explanations). They are
+protected by copyright. This repository being public grants NO right of
+reuse. Without written permission from the publisher, you may not copy,
+modify, publish, distribute, resell or offer this application or any part
+of it, including under another name.
+
+ÉLÉMENTS DE TIERS / THIRD-PARTY COMPONENTS
+Ces éléments restent soumis à leur propre licence :
+- html5-qrcode (lecture des codes-barres) : licence Apache 2.0
+- Tesseract.js (lecture du texte en photo) : licence Apache 2.0
+- Polices Google Fonts (Baloo 2, Baloo Bhaijaan 2, Atkinson Hyperlegible,
+  Noto Sans Arabic, JetBrains Mono) : SIL Open Font License 1.1
+- Données produits Open Food Facts et Open Beauty Facts : Open Database
+  License (ODbL), images sous licence Creative Commons BY-SA

@@ -1,5 +1,5 @@
 // MonScan Santé : garde l'application disponible sans internet.
-const CACHE = "monscan-v5";
+const CACHE = "monscan-v11";
 const SHELL = [
   "./",
   "./index.html",
@@ -32,7 +32,7 @@ self.addEventListener("fetch", e => {
   // Page de l'appli : on essaie internet d'abord pour avoir la dernière version, sinon la copie gardée.
   if (req.mode === "navigate") {
     e.respondWith(
-      fetch(req).then(res => {
+      fetch(req, { cache: "no-store" }).then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put("./index.html", copy));
         return res;

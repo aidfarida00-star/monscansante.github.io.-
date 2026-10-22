@@ -46,9 +46,22 @@ html.big{font-size:120%}
 .msg a{color:inherit;font-weight:700}
 .legal h4{font:800 1.05rem var(--f-display);margin:8px 0 0}
 .legal p,.legal ul{margin:0;font-size:.95rem}
-.legal ul{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.legal ul{padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
 mark.todo{background:var(--warn-soft);color:var(--ink);border:1px dashed var(--warn);border-radius:4px;padding:0 3px}
 .footlinks button,.linkbtn{background:none;border:0;padding:0;color:var(--accent);font:700 .85rem var(--f-body);text-decoration:underline;cursor:pointer}
+html[lang="ar"]{--f-display:"Baloo Bhaijaan 2","Noto Sans Arabic",Tahoma,sans-serif;--f-body:"Noto Sans Arabic",Tahoma,"Segoe UI",sans-serif}
+html[lang="ar"] .brand,html[lang="ar"] .code,html[lang="ar"] input[type=text]{direction:ltr;unicode-bidi:isolate}
+html[lang="ar"] .brand{text-align:start}
+.langsel{margin-inline-start:auto;font:700 .9rem var(--f-body);border-radius:999px;padding:5px 10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff;cursor:pointer}
+.langsel option{color:#10241c;background:#fff}
+.switch select{font:700 .95rem var(--f-body);border-radius:10px;padding:6px 10px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+#updCard{margin-top:12px}
+.vpick{display:flex;flex-direction:column;gap:10px}
+.vpick label{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;font-weight:700}
+.vpick select{min-width:0;width:100%;font:700 .95rem var(--f-body);border-radius:10px;padding:8px 10px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+.vpick label:first-child{grid-template-columns:auto minmax(0,1fr)}
+.vpick input[type=range]{width:100%;accent-color:var(--accent)}
+.vpick output{font-variant-numeric:tabular-nums;min-width:3ch;text-align:end}
 .danger{border-color:var(--bad)!important;color:var(--bad)!important;background:transparent!important}
 .actions .btn[aria-pressed="true"]{background:var(--c1);border-color:var(--c1);color:#fff}
 .sharebox{display:flex;flex-wrap:wrap;gap:8px}
@@ -133,7 +146,7 @@ textarea{font-family:var(--f-body);font-size:1rem;min-height:96px;resize:vertica
 .find.s2{background:var(--bad-soft);border-color:transparent} .find.s1{background:var(--warn-soft);border-color:transparent}
 .find .t{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700}
 .find .e{font-family:var(--f-mono);font-size:.8rem;background:var(--surface);padding:1px 7px;border-radius:6px}
-.find .lvl{margin-left:auto;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:2px 9px;border-radius:999px;color:#fff}
+.find .lvl{margin-inline-start:auto;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:2px 9px;border-radius:999px;color:#fff}
 .find.s2 .lvl{background:var(--bad)} .find.s1 .lvl{background:var(--warn);color:#1c1300} .find.s0 .lvl{background:var(--sunk);color:var(--muted)}
 .find p{margin:0;font-size:.95rem}
 .find .for{font-size:.86rem;color:var(--muted)}
@@ -169,7 +182,7 @@ label.chip input:checked+span::before{content:"✓"}
 .cchip button{border:0;background:rgba(255,255,255,.25);color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font:700 1rem var(--f-body);line-height:1}
 .alts{display:flex;flex-direction:column;gap:8px;background:var(--ok-soft);border-radius:16px;padding:12px}
 .alts .label{color:var(--ok)}
-.alt{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;color:var(--ink);font:400 .92rem var(--f-body)}
+.alt{display:flex;gap:10px;align-items:center;width:100%;text-align:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;color:var(--ink);font:400 .92rem var(--f-body)}
 .alt img,.alt .ph{width:48px;height:48px;border-radius:10px;object-fit:contain;background:#fff;flex:none}
 .alt .ph{background:var(--sunk);display:grid;place-items:center;color:var(--muted)}
 .alt .nm{flex:1;min-width:0}
@@ -186,7 +199,7 @@ label.chip input:checked+span::before{content:"✓"}
 .testrow button{flex:1 1 90px;border:0;border-radius:12px;padding:10px;font:700 .9rem var(--f-body);color:#fff;cursor:pointer}
 /* Historique */
 .hist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.hist button{width:100%;text-align:left;display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;color:var(--ink);font:400 .95rem var(--f-body)}
+.hist button{width:100%;text-align:start;display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;color:var(--ink);font:400 .95rem var(--f-body)}
 .hist .dot{width:14px;height:14px;border-radius:50%;flex:none}
 .hist .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
 @media (prefers-reduced-motion:no-preference){.result{animation:rise .3s ease-out}@keyframes rise{from{transform:translateY(8px)}to{transform:none}}}
@@ -204,17 +217,17 @@ body{padding-block:20px}</style>
 <main class="wrap"><p><a class="linkbtn" href="./">← Retour à MonScan Santé</a></p>
 <div class="card legal">
       <h3>Mentions légales</h3>
-      <p class="hint">Dernière mise à jour : 21 octobre 2026</p>
+      <p class="hint">Dernière mise à jour : 22 octobre 2026</p>
 
       <h4>Éditeur de l'application</h4>
-      <p>MonScan Santé est éditée par <mark class="todo">[Votre prénom et nom]</mark>, <mark class="todo">[micro-entrepreneur / particulier]</mark>.<br>
-      Adresse : <mark class="todo">[Votre adresse postale]</mark><br>
-      E-mail : <mark class="todo">[Votre adresse e-mail de contact]</mark><br>
-      SIRET : <mark class="todo">[Numéro SIRET, une fois l'entreprise créée]</mark></p>
-      <p>Directeur ou directrice de la publication : <mark class="todo">[Votre prénom et nom]</mark>.</p>
+      <p>MonScan Santé est éditée par un <b>particulier</b>, à titre non professionnel et sans activité commerciale.</p>
+      <p>Comme le permet l'article 6, III, 2 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'éditeur a choisi de ne pas rendre publics son nom et son adresse. Ses coordonnées ont été communiquées à l'hébergeur ci-dessous.</p>
+      <p>Pour contacter l'éditeur : <mark class="todo">[votre adresse e-mail de contact]</mark></p>
 
       <h4>Hébergement</h4>
-      <p><mark class="todo">[Nom de l'hébergeur, son adresse et son téléphone : à compléter une fois l'hébergeur définitif choisi]</mark></p>
+      <p>L'application est hébergée par <b>GitHub, Inc.</b> (service GitHub Pages)<br>
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+      Site : https://github.com · Contact : https://support.github.com</p>
 
       <h4>Données sur les produits</h4>
       <p>Les informations sur les produits (ingrédients, additifs, Nutri-Score, NOVA, photos) proviennent des bases collaboratives <b>Open Food Facts</b> et <b>Open Beauty Facts</b>, publiées sous licence Open Database License (ODbL). Ces informations sont saisies par des bénévoles et peuvent contenir des erreurs ou être incomplètes. Vérifiez toujours l'étiquette du produit.</p>
