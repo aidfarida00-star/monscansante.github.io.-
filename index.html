@@ -14,7 +14,7 @@
 <title>MonScan Santé</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Baloo+Bhaijaan+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 [hidden]{display:none!important}
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -58,9 +58,15 @@ html.big{font-size:120%}
 .msg a{color:inherit;font-weight:700}
 .legal h4{font:800 1.05rem var(--f-display);margin:8px 0 0}
 .legal p,.legal ul{margin:0;font-size:.95rem}
-.legal ul{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.legal ul{padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
 mark.todo{background:var(--warn-soft);color:var(--ink);border:1px dashed var(--warn);border-radius:4px;padding:0 3px}
 .footlinks button,.linkbtn{background:none;border:0;padding:0;color:var(--accent);font:700 .85rem var(--f-body);text-decoration:underline;cursor:pointer}
+html[lang="ar"]{--f-display:"Baloo Bhaijaan 2","Noto Sans Arabic",Tahoma,sans-serif;--f-body:"Noto Sans Arabic",Tahoma,"Segoe UI",sans-serif}
+html[lang="ar"] .brand,html[lang="ar"] .code,html[lang="ar"] input[type=text]{direction:ltr;unicode-bidi:isolate}
+html[lang="ar"] .brand{text-align:start}
+.langsel{margin-inline-start:auto;font:700 .9rem var(--f-body);border-radius:999px;padding:5px 10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff;cursor:pointer}
+.langsel option{color:#10241c;background:#fff}
+.switch select{font:700 .95rem var(--f-body);border-radius:10px;padding:6px 10px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
 .danger{border-color:var(--bad)!important;color:var(--bad)!important;background:transparent!important}
 .actions .btn[aria-pressed="true"]{background:var(--c1);border-color:var(--c1);color:#fff}
 .sharebox{display:flex;flex-wrap:wrap;gap:8px}
@@ -145,7 +151,7 @@ textarea{font-family:var(--f-body);font-size:1rem;min-height:96px;resize:vertica
 .find.s2{background:var(--bad-soft);border-color:transparent} .find.s1{background:var(--warn-soft);border-color:transparent}
 .find .t{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700}
 .find .e{font-family:var(--f-mono);font-size:.8rem;background:var(--surface);padding:1px 7px;border-radius:6px}
-.find .lvl{margin-left:auto;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:2px 9px;border-radius:999px;color:#fff}
+.find .lvl{margin-inline-start:auto;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:2px 9px;border-radius:999px;color:#fff}
 .find.s2 .lvl{background:var(--bad)} .find.s1 .lvl{background:var(--warn);color:#1c1300} .find.s0 .lvl{background:var(--sunk);color:var(--muted)}
 .find p{margin:0;font-size:.95rem}
 .find .for{font-size:.86rem;color:var(--muted)}
@@ -181,7 +187,7 @@ label.chip input:checked+span::before{content:"✓"}
 .cchip button{border:0;background:rgba(255,255,255,.25);color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font:700 1rem var(--f-body);line-height:1}
 .alts{display:flex;flex-direction:column;gap:8px;background:var(--ok-soft);border-radius:16px;padding:12px}
 .alts .label{color:var(--ok)}
-.alt{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;color:var(--ink);font:400 .92rem var(--f-body)}
+.alt{display:flex;gap:10px;align-items:center;width:100%;text-align:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;color:var(--ink);font:400 .92rem var(--f-body)}
 .alt img,.alt .ph{width:48px;height:48px;border-radius:10px;object-fit:contain;background:#fff;flex:none}
 .alt .ph{background:var(--sunk);display:grid;place-items:center;color:var(--muted)}
 .alt .nm{flex:1;min-width:0}
@@ -198,7 +204,7 @@ label.chip input:checked+span::before{content:"✓"}
 .testrow button{flex:1 1 90px;border:0;border-radius:12px;padding:10px;font:700 .9rem var(--f-body);color:#fff;cursor:pointer}
 /* Historique */
 .hist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.hist button{width:100%;text-align:left;display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;color:var(--ink);font:400 .95rem var(--f-body)}
+.hist button{width:100%;text-align:start;display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;color:var(--ink);font:400 .95rem var(--f-body)}
 .hist .dot{width:14px;height:14px;border-radius:50%;flex:none}
 .hist .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
 @media (prefers-reduced-motion:no-preference){.result{animation:rise .3s ease-out}@keyframes rise{from{transform:translateY(8px)}to{transform:none}}}
@@ -219,8 +225,9 @@ label.chip input:checked+span::before{content:"✓"}
       <div class="brandrow">
         <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#ffffff"/><g fill="#0b4a36"><rect x="11" y="13" width="5" height="32" rx="1"/><rect x="19" y="13" width="2.5" height="32"/><rect x="24.5" y="13" width="5" height="32" rx="1"/><rect x="32.5" y="13" width="2.5" height="32"/><rect x="38" y="13" width="4.5" height="24" rx="1"/></g><circle cx="45" cy="45" r="13" fill="#ff6b35"/><path d="M38.5 45.5l4.5 4.5 8.5-9" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="brand">MonScan<span> Santé</span></div>
+        <select id="langSel" class="langsel" aria-label="Langue / Language / اللغة"><option value="fr">FR</option><option value="en">EN</option><option value="ar">عربي</option></select>
       </div>
-      <p class="tagline">Scannez un produit, voyez ce qui compte pour votre santé.</p>
+      <p class="tagline" data-i18n="tagline">Scannez un produit, voyez ce qui compte pour votre santé.</p>
     </div>
     <div class="who" id="whoSummary"></div>
   </div>
@@ -228,43 +235,43 @@ label.chip input:checked+span::before{content:"✓"}
 
 <main class="wrap">
   <nav class="tabs" role="tablist">
-    <button role="tab" id="tab-scan" aria-selected="true" data-tab="scan">Scanner</button>
-    <button role="tab" id="tab-profil" aria-selected="false" data-tab="profil">Mon profil</button>
-    <button role="tab" id="tab-hist" aria-selected="false" data-tab="hist">Mes produits</button>
+    <button role="tab" id="tab-scan" aria-selected="true" data-tab="scan" data-i18n="tab_scan">Scanner</button>
+    <button role="tab" id="tab-profil" aria-selected="false" data-tab="profil" data-i18n="tab_profil">Mon profil</button>
+    <button role="tab" id="tab-hist" aria-selected="false" data-tab="hist" data-i18n="tab_hist">Mes produits</button>
   </nav>
 
   <!-- SCANNER -->
   <section class="panel" id="panel-scan">
     <div class="install" id="installCard" hidden>
-      <p id="installTxt">Installez MonScan Santé sur votre écran d'accueil.</p>
-      <button class="btn solid small" type="button" id="installBtn" hidden>Installer</button>
-      <button class="x" type="button" id="installX" aria-label="Fermer">×</button>
+      <p id="installTxt" data-i18n="install_txt">Installez MonScan Santé sur votre écran d'accueil.</p>
+      <button class="btn solid small" type="button" id="installBtn" data-i18n="install_btn" hidden>Installer</button>
+      <button class="x" type="button" id="installX" data-i18n-aria="close" aria-label="Fermer">×</button>
     </div>
     <div class="card">
       <button class="bigscan" id="camBtn" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 8v8M10 8v8M13 8v8M16 8v8"/></svg>
-        <span id="camLabel">Scanner avec la caméra</span>
+        <span id="camLabel" data-i18n="cam_start">Scanner avec la caméra</span>
       </button>
       <div id="camBox" hidden>
         <div id="reader"></div>
         <div class="frame"></div><div class="laser"></div>
-        <div class="camhint">Placez le code-barres dans le cadre</div>
+        <div class="camhint" data-i18n="cam_hint">Placez le code-barres dans le cadre</div>
       </div>
       <div id="hiddenReader" hidden></div>
       <div class="btnrow">
         <label class="btn" for="photoInput">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          Prendre une photo
+          <span data-i18n="photo">Prendre une photo</span>
         </label>
         <button class="btn" type="button" id="typeBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
-          Numéro ou nom
+          <span data-i18n="type">Numéro ou nom</span>
         </button>
       </div>
       <input type="file" id="photoInput" accept="image/*" capture="environment" hidden>
       <form class="row" id="codeForm" hidden>
-        <input type="text" id="codeInput" placeholder="Code-barres ou nom (ex. Nutella)" autocomplete="off" enterkeyhint="search">
-        <button class="btn solid small" type="submit">Chercher</button>
+        <input type="text" id="codeInput" data-i18n-ph="code_ph" placeholder="Code-barres ou nom (ex. Nutella)" autocomplete="off" enterkeyhint="search">
+        <button class="btn solid small" type="submit" data-i18n="search">Chercher</button>
       </form>
     </div>
 
@@ -272,20 +279,20 @@ label.chip input:checked+span::before{content:"✓"}
     <div id="result"></div>
 
     <details class="card" id="pasteBox">
-      <summary>Produit introuvable ? Photographiez sa liste d'ingrédients</summary>
+      <summary data-i18n="paste_sum">Produit introuvable ? Photographiez sa liste d'ingrédients</summary>
       <label class="btn" for="ocrInput">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        Photographier les ingrédients
+        <span data-i18n="ocr_btn">Photographier les ingrédients</span>
       </label>
       <input type="file" id="ocrInput" accept="image/*" capture="environment" hidden>
       <div id="ocrState" hidden><div class="ocrbar"><i id="ocrBar"></i></div><p class="hint" id="ocrMsg"></p></div>
-      <p class="hint">Ou collez-la vous-même. Vérifiez le texte avant d'analyser.</p>
-      <textarea id="pasteText" placeholder="Liste d'ingrédients de l'emballage…"></textarea>
-      <button class="btn solid small" id="pasteBtn" type="button">Analyser cette liste</button>
+      <p class="hint" data-i18n="paste_hint">Ou collez-la vous-même. Vérifiez le texte avant d'analyser.</p>
+      <textarea id="pasteText" data-i18n-ph="paste_ph" placeholder="Liste d'ingrédients de l'emballage…"></textarea>
+      <button class="btn solid small" id="pasteBtn" type="button" data-i18n="paste_btn">Analyser cette liste</button>
     </details>
     <details class="card" id="exBox">
-      <summary>Essayer avec un produit d'exemple</summary>
-      <p class="hint">Produits inventés pour découvrir l'application sans scanner.</p>
+      <summary data-i18n="ex_sum">Essayer avec un produit d'exemple</summary>
+      <p class="hint" data-i18n="ex_hint">Produits inventés pour découvrir l'application sans scanner.</p>
       <div class="row" id="examples"></div>
     </details>
   </section>
@@ -293,52 +300,53 @@ label.chip input:checked+span::before{content:"✓"}
   <!-- PROFIL -->
   <section class="panel" id="panel-profil" hidden>
     <div class="card">
-      <h3>Pour qui faites-vous les courses ?</h3>
+      <h3 data-i18n="who_q">Pour qui faites-vous les courses ?</h3>
       <div class="members" id="members"></div>
       <div class="row">
-        <input type="text" id="memberName" maxlength="24" placeholder="Prénom" aria-label="Prénom de la personne" style="font-family:var(--f-body)">
+        <input type="text" id="memberName" maxlength="24" data-i18n-ph="first_name" data-i18n-aria="first_name_aria" placeholder="Prénom" aria-label="Prénom de la personne" style="font-family:var(--f-body)">
         <button class="btn small" type="button" id="delMember">Supprimer</button>
       </div>
       <p class="hint" id="delHint" hidden></p>
     </div>
     <div class="card">
       <h3 id="profilTitle">Ce qui vous concerne</h3>
-      <p class="hint">Cochez les situations de cette personne. L'analyse met en avant ce qui est à éviter pour elle. Tout reste sur ce téléphone.</p>
+      <p class="hint" data-i18n="profil_hint">Cochez les situations de cette personne. L'analyse met en avant ce qui est à éviter pour elle. Tout reste sur ce téléphone.</p>
       <div id="profileGroups" style="display:flex;flex-direction:column;gap:14px"></div>
     </div>
     <div class="card">
-      <h3>Mes ingrédients à éviter</h3>
-      <p class="hint">Ajoutez tout ce que cette personne ne supporte pas, même s'il n'est pas dans la liste : fraise, kiwi, ail, colorant…</p>
+      <h3 data-i18n="custom_title">Mes ingrédients à éviter</h3>
+      <p class="hint" data-i18n="custom_hint">Ajoutez tout ce que cette personne ne supporte pas, même s'il n'est pas dans la liste : fraise, kiwi, ail, colorant…</p>
       <form class="row" id="customForm">
-        <input type="text" id="customInput" maxlength="40" placeholder="ex. fraise" style="font-family:var(--f-body)">
-        <button class="btn solid small" type="submit">Ajouter</button>
+        <input type="text" id="customInput" maxlength="40" data-i18n-ph="custom_ph" placeholder="ex. fraise" style="font-family:var(--f-body)">
+        <button class="btn solid small" type="submit" data-i18n="add">Ajouter</button>
       </form>
       <div class="chips" id="customList"></div>
     </div>
     <div class="card">
-      <label class="switch" for="sonToggle">Son et vibration des alertes <input type="checkbox" id="sonToggle"></label>
-      <p class="hint">Une alarme quand le produit est à éviter, deux bips pour « prudence », un petit son joyeux quand tout va bien. Sur iPhone, désactivez le mode silencieux pour entendre le son.</p>
+      <label class="switch" for="sonToggle"><span data-i18n="sound_label">Son et vibration des alertes</span> <input type="checkbox" id="sonToggle"></label>
+      <p class="hint" data-i18n="sound_hint">Une alarme quand le produit est à éviter, deux bips pour « prudence », un petit son joyeux quand tout va bien. Sur iPhone, désactivez le mode silencieux pour entendre le son.</p>
       <div class="testrow">
-        <button type="button" data-test="2" style="background:var(--bad)">Tester : danger</button>
-        <button type="button" data-test="1" style="background:var(--warn);color:#1c1300">Prudence</button>
-        <button type="button" data-test="0" style="background:var(--ok)">OK</button>
+        <button type="button" data-test="2" data-i18n="test_danger" style="background:var(--bad)">Tester : danger</button>
+        <button type="button" data-test="1" data-i18n="test_caution" style="background:var(--warn);color:#1c1300">Prudence</button>
+        <button type="button" data-test="0" data-i18n="test_ok" style="background:var(--ok)">OK</button>
       </div>
-      <label class="switch" for="dangerVoice">Voix d'alerte pour les produits à éviter <input type="checkbox" id="dangerVoice"></label>
-      <p class="hint">Après l'alarme, une voix dit « Attention ! » et nomme ce qui pose problème dans le produit.</p>
-      <div class="testrow"><button type="button" id="testVoice" style="background:var(--bad)">Écouter la voix d'alerte</button></div>
+      <label class="switch" for="dangerVoice"><span data-i18n="dvoice_label">Voix d'alerte pour les produits à éviter</span> <input type="checkbox" id="dangerVoice"></label>
+      <p class="hint" data-i18n="dvoice_hint">Après l'alarme, une voix dit « Attention ! » et nomme ce qui pose problème dans le produit.</p>
+      <div class="testrow"><button type="button" id="testVoice" data-i18n="dvoice_test" style="background:var(--bad)">Écouter la voix d'alerte</button></div>
     </div>
     <div class="card">
-      <h3>Affichage</h3>
-      <label class="switch" for="bigToggle">Grands caractères <input type="checkbox" id="bigToggle"></label>
-      <label class="switch" for="hcToggle">Contraste élevé <input type="checkbox" id="hcToggle"></label>
-      <label class="switch" for="voiceToggle">Lire le verdict à voix haute <input type="checkbox" id="voiceToggle"></label>
-      <p class="hint">Pour lire plus facilement en magasin, surtout si la vue baisse. Le bouton « Écouter » sur chaque produit marche aussi quand la lecture automatique est coupée.</p>
+      <h3 data-i18n="display">Affichage</h3>
+      <label class="switch" for="langSel2"><span data-i18n="lang_label">Langue</span> <select id="langSel2"><option value="fr">Français</option><option value="en">English</option><option value="ar">العربية</option></select></label>
+      <label class="switch" for="bigToggle"><span data-i18n="big">Grands caractères</span> <input type="checkbox" id="bigToggle"></label>
+      <label class="switch" for="hcToggle"><span data-i18n="hc">Contraste élevé</span> <input type="checkbox" id="hcToggle"></label>
+      <label class="switch" for="voiceToggle"><span data-i18n="voice_label">Lire le verdict à voix haute</span> <input type="checkbox" id="voiceToggle"></label>
+      <p class="hint" data-i18n="display_hint">Pour lire plus facilement en magasin, surtout si la vue baisse. Le bouton « Écouter » sur chaque produit marche aussi quand la lecture automatique est coupée.</p>
     </div>
     <div class="card">
-      <h3>Vos données</h3>
-      <p class="hint" style="color:var(--ink)">Vos profils, vos favoris et votre historique restent uniquement sur ce téléphone. Rien n'est envoyé à personne. Pour trouver un produit, l'application envoie seulement son code-barres ou son nom à la base publique Open Food Facts, jamais vos informations de santé.</p>
-      <button type="button" class="linkbtn" data-info="confidentialite" style="align-self:flex-start">Lire la politique de confidentialité</button>
-      <button class="btn small danger" type="button" id="wipeBtn">Effacer toutes mes données</button>
+      <h3 data-i18n="data_title">Vos données</h3>
+      <p class="hint" data-i18n="data_hint" style="color:var(--ink)">Vos profils, vos favoris et votre historique restent uniquement sur ce téléphone. Rien n'est envoyé à personne. Pour trouver un produit, l'application envoie seulement son code-barres ou son nom à la base publique Open Food Facts, jamais vos informations de santé.</p>
+      <button type="button" class="linkbtn" data-info="confidentialite" data-i18n="privacy_link" style="align-self:flex-start">Lire la politique de confidentialité</button>
+      <button class="btn small danger" type="button" id="wipeBtn" data-i18n="wipe">Effacer toutes mes données</button>
       <p class="hint" id="wipeHint" hidden></p>
     </div>
   </section>
@@ -346,20 +354,21 @@ label.chip input:checked+span::before{content:"✓"}
   <!-- HISTORIQUE -->
   <section class="panel" id="panel-hist" hidden>
     <div class="card">
-      <h3>Mes favoris</h3>
+      <h3 data-i18n="fav_title">Mes favoris</h3>
       <ul class="hist" id="favList"></ul>
-      <p class="hint" id="favEmpty">Touchez « ♥ Garder » sur un produit en qui vous avez confiance pour le retrouver ici.</p>
+      <p class="hint" id="favEmpty" data-i18n="fav_empty">Touchez « ♥ Garder » sur un produit en qui vous avez confiance pour le retrouver ici.</p>
     </div>
     <div class="card">
-      <h3>Derniers produits</h3>
+      <h3 data-i18n="hist_title">Derniers produits</h3>
       <ul class="hist" id="histList"></ul>
-      <p class="hint" id="histEmpty">Les produits que vous analysez apparaîtront ici.</p>
+      <p class="hint" id="histEmpty" data-i18n="hist_empty">Les produits que vous analysez apparaîtront ici.</p>
     </div>
   </section>
 
   <!-- INFOS LÉGALES -->
   <section class="panel" id="panel-info" hidden>
-    <button class="btn small" type="button" id="infoBack" style="align-self:flex-start">← Retour</button>
+    <button class="btn small" type="button" id="infoBack" data-i18n="back" style="align-self:flex-start">← Retour</button>
+    <p class="msg info" id="legalNote" data-i18n="legal_fr_only" hidden></p>
     <div class="card legal" id="mentions">
       <h3>Mentions légales</h3>
       <p class="hint">Dernière mise à jour : 21 octobre 2026</p>
@@ -436,13 +445,382 @@ label.chip input:checked+span::before{content:"✓"}
 
   </section>
 
-  <p class="disclaimer">MonScan Santé informe à partir des ingrédients déclarés (bases collaboratives Open Food Facts et Open Beauty Facts). Ce n'est pas un avis médical : en cas de doute, demandez à votre médecin ou pharmacien.</p>
-  <p class="disclaimer footlinks"><button type="button" data-info="mentions">Mentions légales</button> · <button type="button" data-info="confidentialite">Confidentialité</button></p>
+  <p class="disclaimer" data-i18n="disclaimer">MonScan Santé informe à partir des ingrédients déclarés (bases collaboratives Open Food Facts et Open Beauty Facts). Ce n'est pas un avis médical : en cas de doute, demandez à votre médecin ou pharmacien.</p>
+  <p class="disclaimer footlinks"><button type="button" data-info="mentions" data-i18n="legal_link">Mentions légales</button> · <button type="button" data-info="confidentialite" data-i18n="privacy">Confidentialité</button></p>
 </main>
 
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
 "use strict";
+/* ---------- Langues : français, anglais, arabe ---------- */
+let LANG = (()=>{ try{ const s=JSON.parse(localStorage.getItem("pc_lang")||"null"); if(["fr","en","ar"].includes(s)) return s; }catch(e){}
+  const n=((navigator.languages&&navigator.languages[0])||navigator.language||"fr").slice(0,2).toLowerCase();
+  return ["fr","en","ar"].includes(n)?n:"fr"; })();
+const T = {
+fr:{
+ tagline:"Scannez un produit, voyez ce qui compte pour votre santé.",
+ tab_scan:"Scanner", tab_profil:"Mon profil", tab_hist:"Mes produits",
+ install_txt:"Installez MonScan Santé sur votre écran d'accueil.", install_btn:"Installer", close:"Fermer",
+ install_android:"Installez MonScan Santé sur votre écran d'accueil, comme une vraie appli.",
+ install_ios:"Pour l'installer : touchez Partager (le carré avec une flèche) puis « Sur l'écran d'accueil ».",
+ cam_start:"Scanner avec la caméra", cam_stop:"Arrêter la caméra", cam_hint:"Placez le code-barres dans le cadre",
+ photo:"Prendre une photo", type:"Numéro ou nom", code_ph:"Code-barres ou nom (ex. Nutella)", search:"Chercher",
+ paste_sum:"Produit introuvable ? Photographiez sa liste d'ingrédients", ocr_btn:"Photographier les ingrédients",
+ paste_hint:"Ou collez-la vous-même. Vérifiez le texte avant d'analyser.", paste_ph:"Liste d'ingrédients de l'emballage…",
+ paste_btn:"Analyser cette liste", ex_sum:"Essayer avec un produit d'exemple",
+ ex_hint:"Produits inventés pour découvrir l'application sans scanner.",
+ who_q:"Pour qui faites-vous les courses ?", first_name:"Prénom", first_name_aria:"Prénom de la personne", delete:"Supprimer",
+ profil_title:"Ce qui concerne {name}",
+ profil_hint:"Cochez les situations de cette personne. L'analyse met en avant ce qui est à éviter pour elle. Tout reste sur ce téléphone.",
+ custom_title:"Mes ingrédients à éviter",
+ custom_hint:"Ajoutez tout ce que cette personne ne supporte pas, même s'il n'est pas dans la liste : fraise, kiwi, ail, colorant…",
+ custom_ph:"ex. fraise", add:"Ajouter",
+ sound_label:"Son et vibration des alertes",
+ sound_hint:"Une alarme quand le produit est à éviter, deux bips pour « prudence », un petit son joyeux quand tout va bien. Sur iPhone, désactivez le mode silencieux pour entendre le son.",
+ test_danger:"Tester : danger", test_caution:"Prudence", test_ok:"OK",
+ dvoice_label:"Voix d'alerte pour les produits à éviter",
+ dvoice_hint:"Après l'alarme, une voix dit « Attention ! » et nomme ce qui pose problème dans le produit.",
+ dvoice_test:"Écouter la voix d'alerte",
+ display:"Affichage", big:"Grands caractères", hc:"Contraste élevé", voice_label:"Lire le verdict à voix haute",
+ display_hint:"Pour lire plus facilement en magasin, surtout si la vue baisse. Le bouton « Écouter » sur chaque produit marche aussi quand la lecture automatique est coupée.",
+ lang_label:"Langue",
+ data_title:"Vos données",
+ data_hint:"Vos profils, vos favoris et votre historique restent uniquement sur ce téléphone. Rien n'est envoyé à personne. Pour trouver un produit, l'application envoie seulement son code-barres ou son nom à la base publique Open Food Facts, jamais vos informations de santé.",
+ privacy_link:"Lire la politique de confidentialité", wipe:"Effacer toutes mes données", wipe_confirm:"Oui, tout effacer",
+ wipe_hint:"Profils, favoris, historique et réglages seront supprimés de ce téléphone. Touchez encore pour confirmer.",
+ wipe_done:"Toutes vos données ont été effacées.",
+ fav_title:"Mes favoris", fav_empty:"Touchez « ♥ Garder » sur un produit en qui vous avez confiance pour le retrouver ici.",
+ hist_title:"Derniers produits", hist_empty:"Les produits que vous analysez apparaîtront ici.",
+ back:"← Retour", legal_fr_only:"",
+ disclaimer:"MonScan Santé informe à partir des ingrédients déclarés (bases collaboratives Open Food Facts et Open Beauty Facts). Ce n'est pas un avis médical : en cas de doute, demandez à votre médecin ou pharmacien.",
+ legal_link:"Mentions légales", privacy:"Confidentialité",
+ alt_title:"Plutôt choisir", alt_searching:"Je cherche dans le même rayon des produits meilleurs pour {name}…",
+ alt_good:"Bon pour {name}", alt_better:"Mieux", alt_none:"Pas de meilleure option trouvée dans ce rayon pour l'instant.",
+ err_digits:"Tapez les chiffres situés sous le code-barres (8 ou 13 chiffres).", searching_code:"Recherche du produit {code}…",
+ offline:"Pas d'internet : voici l'analyse enregistrée lors de votre dernier scan.",
+ not_found:"Le produit {code} n'est pas encore dans la base. Photographiez sa liste d'ingrédients ci-dessous pour l'analyser.",
+ add_off:"Vous pouvez aussi l'ajouter à la base Open Food Facts pour aider les autres.",
+ no_conn:"Pas de connexion à la base de produits. Vérifiez votre connexion internet, ou collez la liste d'ingrédients ci-dessous.",
+ no_conn2:"Pas de connexion à la base de produits. Vérifiez votre connexion internet.",
+ lv0:"Info", lv1:"Prudence", lv2:"À éviter",
+ welcome_title:"Prêt à faire vos courses", w1:"Choisissez votre profil", w2:"Scannez le code-barres", w3:"Lisez le verdict",
+ welcome_ready:"Le profil de {name} est prêt. Touchez le bouton orange pour scanner.",
+ welcome_start:"Commencez par l'onglet « Mon profil » : vous pouvez y ajouter chaque personne de la famille.",
+ v_avoid:"À éviter", v_caution:"Avec prudence", v_good:"Bon pour {name}",
+ v_noprofile:"Choisissez un profil pour {name} dans « Mon profil ».", v_for:"Pour {name} : {list}", perso_list:"liste perso",
+ per100:"Pour 100 g", sugars:"Sucres", salt:"Sel", satfat:"Gras saturés", concerns:"Concerne : ",
+ none_found:"Aucun additif ni ingrédient sensible repéré dans la liste.", others:"Autres additifs, sans alerte connue",
+ nova1:"Brut ou peu transformé", nova2:"Ingrédient culinaire", nova3:"Transformé", nova4:"Ultra-transformé",
+ fav_on:"♥ Dans mes favoris", fav_off:"♡ Garder", share:"Partager", listen:"Écouter",
+ tag_example:"Produit d'exemple", tag_beauty:"Cosmétique", tag_food:"Alimentaire",
+ contains:"Ce que contient le produit", full_ing:"Liste complète des ingrédients",
+ no_ing:"Liste d'ingrédients absente de la base pour ce produit.",
+ no_name:"Sans nom", add_person:"+ Ajouter une personne", person_n:"Personne {n}", me:"Moi",
+ del_confirm:"Oui, supprimer", del_hint:"Touchez encore pour supprimer {name} et ses réglages.",
+ remove_x:"Retirer {x}", no_custom:"Aucun ingrédient ajouté.", for_whom:"Pour qui", for_name:"Pour {name}",
+ n_perso:"+ {n} perso", no_profile:"Aucun profil choisi", edit:"Modifier", choose_profile:"Choisir le profil",
+ pasted_list:"liste collée",
+ sh_avoid:"À ÉVITER ✕", sh_caution:"Avec prudence !", sh_good:"Bon ✓", sh_verdict:"Verdict pour {name} : {v}", sh_code:"Code-barres : {code}",
+ copy:"Copier le texte", copied:"Copié ✓", selected:"Texte sélectionné", remove_fav:"Retirer {x} des favoris",
+ sp_avoid:"à éviter", sp_caution:"à consommer avec prudence", sp_good:"bon",
+ sp_full:"{prod}. Pour {name}, ce produit est {v}.", sp_attn:" Attention : {list}.",
+ sp_danger:"Attention ! Ce produit est à éviter pour {name}.", sp_contains:" Il contient : {list}.", sp_test_list:"nitrites, aspartame",
+ ocr_prep:"Préparation de la lecture… (la première fois peut prendre 20 secondes)", ocr_reading:"Lecture du texte… {p} %",
+ ocr_done:"Texte lu. Corrigez-le si besoin, l'analyse est affichée au-dessus.", ocr_name:"Liste d'ingrédients photographiée",
+ ocr_unavail:"La lecture de photo n'est pas disponible ici. Elle fonctionne sur la version installée sur votre téléphone.",
+ ocr_fail:"Texte illisible. Reprenez la photo bien à plat, de près et éclairée, ou collez la liste à la main.",
+ err_2letters:"Tapez au moins 2 lettres du nom du produit.", searching_q:"Recherche de « {q} »…",
+ no_result:"Aucun produit trouvé pour « {q} ». Essayez un autre mot, ou scannez le code-barres.",
+ results_for:"Résultats pour « {q} »", tap_right:"Touchez le bon produit pour l'analyser.",
+ paste_first:"Collez d'abord la liste d'ingrédients.", pasted_name:"Liste d'ingrédients collée",
+ reading_bc:"Lecture du code-barres…",
+ bc_fail:"Code-barres illisible. Reprenez la photo de plus près, bien à plat et éclairée, ou tapez le numéro.",
+ cam_denied:"L'accès à la caméra est refusé. Touchez le cadenas à côté de l'adresse (ou les réglages du navigateur), autorisez la caméra, puis rechargez la page.",
+ cam_none:"Aucune caméra trouvée sur cet appareil. Utilisez « Prendre une photo » ou « Numéro ou nom ».",
+ cam_busy:"La caméra est déjà utilisée par une autre application. Fermez-la, puis réessayez.",
+ cam_https:"La caméra ne marche que sur une adresse sécurisée (https://…).",
+ cam_other:"La caméra n'a pas pu démarrer ({e}). Utilisez « Prendre une photo » : le téléphone ouvrira l'appareil photo.",
+ scan_module:"Le module de scan n'a pas pu se charger. Vérifiez votre connexion internet puis rechargez la page.",
+ cam_nobrowser:"Ce navigateur ne donne pas accès à la caméra ici. Utilisez « Prendre une photo » : le téléphone ouvrira l'appareil photo.",
+ al_name:"Allergène : {x}", al_msg:"Le produit contient cet allergène.",
+ tr_name:"Traces possibles : {x}", tr_msg:"L'usine manipule cet allergène : risque de traces.",
+ hi_sugar:"Sucre élevé", mid_sugar:"Sucre modéré", hi_salt:"Sel élevé", mid_salt:"Sel modéré",
+ hi_sat:"Graisses saturées élevées", mid_sat:"Graisses saturées modérées",
+ hi_msg:"{v} g pour 100 g, au-dessus du seuil « élevé » ({hi} g).", mid_msg:"{v} g pour 100 g.",
+ cu_name:"Dans votre liste : {x}", cu_msg:"Vous avez demandé à éviter cet ingrédient.",
+ cu_tr_msg:"L'emballage signale de possibles traces de cet ingrédient.", no_name_prod:"Produit sans nom"
+},
+en:{
+ tagline:"Scan a product and see what matters for your health.",
+ tab_scan:"Scan", tab_profil:"My profile", tab_hist:"My products",
+ install_txt:"Install MonScan Santé on your home screen.", install_btn:"Install", close:"Close",
+ install_android:"Install MonScan Santé on your home screen, like a real app.",
+ install_ios:"To install it: tap Share (the square with an arrow), then “Add to Home Screen”.",
+ cam_start:"Scan with the camera", cam_stop:"Stop the camera", cam_hint:"Place the barcode inside the frame",
+ photo:"Take a photo", type:"Number or name", code_ph:"Barcode or name (e.g. Nutella)", search:"Search",
+ paste_sum:"Product not found? Take a photo of its ingredient list", ocr_btn:"Photograph the ingredients",
+ paste_hint:"Or paste it yourself. Check the text before analyzing.", paste_ph:"Ingredient list from the package…",
+ paste_btn:"Analyze this list", ex_sum:"Try with a sample product",
+ ex_hint:"Made-up products to discover the app without scanning.",
+ who_q:"Who are you shopping for?", first_name:"First name", first_name_aria:"Person's first name", delete:"Delete",
+ profil_title:"What applies to {name}",
+ profil_hint:"Tick this person's situations. The analysis highlights what they should avoid. Everything stays on this phone.",
+ custom_title:"My ingredients to avoid",
+ custom_hint:"Add anything this person can't tolerate, even if it isn't in the list: strawberry, kiwi, garlic, colouring…",
+ custom_ph:"e.g. strawberry", add:"Add",
+ sound_label:"Alert sound and vibration",
+ sound_hint:"An alarm when the product should be avoided, two beeps for “caution”, a cheerful sound when all is well. On iPhone, turn off silent mode to hear it.",
+ test_danger:"Test: danger", test_caution:"Caution", test_ok:"OK",
+ dvoice_label:"Voice alert for products to avoid",
+ dvoice_hint:"After the alarm, a voice says “Warning!” and names what is wrong with the product.",
+ dvoice_test:"Hear the voice alert",
+ display:"Display", big:"Large text", hc:"High contrast", voice_label:"Read the verdict aloud",
+ display_hint:"To read more easily in the shop, especially if your eyesight is weaker. The “Listen” button on each product also works when automatic reading is off.",
+ lang_label:"Language",
+ data_title:"Your data",
+ data_hint:"Your profiles, favourites and history stay only on this phone. Nothing is sent to anyone. To find a product, the app only sends its barcode or name to the public Open Food Facts database, never your health information.",
+ privacy_link:"Read the privacy policy", wipe:"Delete all my data", wipe_confirm:"Yes, delete everything",
+ wipe_hint:"Profiles, favourites, history and settings will be removed from this phone. Tap again to confirm.",
+ wipe_done:"All your data has been deleted.",
+ fav_title:"My favourites", fav_empty:"Tap “♡ Keep” on a product you trust to find it here.",
+ hist_title:"Recent products", hist_empty:"Products you analyze will appear here.",
+ back:"← Back", legal_fr_only:"These legal pages are only available in French for now.",
+ disclaimer:"MonScan Santé gives information based on the declared ingredients (Open Food Facts and Open Beauty Facts community databases). It is not medical advice: if in doubt, ask your doctor or pharmacist.",
+ legal_link:"Legal notice", privacy:"Privacy",
+ alt_title:"Better choices", alt_searching:"Looking in the same aisle for better products for {name}…",
+ alt_good:"Good for {name}", alt_better:"Better", alt_none:"No better option found in this aisle for now.",
+ err_digits:"Type the digits under the barcode (8 or 13 digits).", searching_code:"Looking up product {code}…",
+ offline:"No internet: here is the analysis saved from your last scan.",
+ not_found:"Product {code} isn't in the database yet. Take a photo of its ingredient list below to analyze it.",
+ add_off:"You can also add it to the Open Food Facts database to help others.",
+ no_conn:"Can't reach the product database. Check your internet connection, or paste the ingredient list below.",
+ no_conn2:"Can't reach the product database. Check your internet connection.",
+ lv0:"Info", lv1:"Caution", lv2:"Avoid",
+ welcome_title:"Ready to go shopping", w1:"Choose your profile", w2:"Scan the barcode", w3:"Read the verdict",
+ welcome_ready:"{name}'s profile is ready. Tap the orange button to scan.",
+ welcome_start:"Start with the “My profile” tab: you can add each family member there.",
+ v_avoid:"Avoid", v_caution:"With caution", v_good:"Good for {name}",
+ v_noprofile:"Choose a profile for {name} in “My profile”.", v_for:"For {name}: {list}", perso_list:"personal list",
+ per100:"Per 100 g", sugars:"Sugars", salt:"Salt", satfat:"Saturated fat", concerns:"Affects: ",
+ none_found:"No additive or sensitive ingredient found in the list.", others:"Other additives, no known alert",
+ nova1:"Unprocessed or minimally processed", nova2:"Culinary ingredient", nova3:"Processed", nova4:"Ultra-processed",
+ fav_on:"♥ In my favourites", fav_off:"♡ Keep", share:"Share", listen:"Listen",
+ tag_example:"Sample product", tag_beauty:"Cosmetic", tag_food:"Food",
+ contains:"What the product contains", full_ing:"Full ingredient list",
+ no_ing:"No ingredient list in the database for this product.",
+ no_name:"No name", add_person:"+ Add a person", person_n:"Person {n}", me:"Me",
+ del_confirm:"Yes, delete", del_hint:"Tap again to delete {name} and their settings.",
+ remove_x:"Remove {x}", no_custom:"No ingredient added.", for_whom:"For whom", for_name:"For {name}",
+ n_perso:"+ {n} personal", no_profile:"No profile chosen", edit:"Edit", choose_profile:"Choose the profile",
+ pasted_list:"pasted list",
+ sh_avoid:"AVOID ✕", sh_caution:"With caution!", sh_good:"Good ✓", sh_verdict:"Verdict for {name}: {v}", sh_code:"Barcode: {code}",
+ copy:"Copy text", copied:"Copied ✓", selected:"Text selected", remove_fav:"Remove {x} from favourites",
+ sp_avoid:"one to avoid", sp_caution:"one to eat with caution", sp_good:"fine",
+ sp_full:"{prod}. For {name}, this product is {v}.", sp_attn:" Warning: {list}.",
+ sp_danger:"Warning! {name} should avoid this product.", sp_contains:" It contains: {list}.", sp_test_list:"nitrites, aspartame",
+ ocr_prep:"Preparing to read… (the first time can take 20 seconds)", ocr_reading:"Reading text… {p}%",
+ ocr_done:"Text read. Correct it if needed; the analysis is shown above.", ocr_name:"Photographed ingredient list",
+ ocr_unavail:"Photo reading isn't available here. It works on the version installed on your phone.",
+ ocr_fail:"Text unreadable. Retake the photo flat, close up and well lit, or paste the list by hand.",
+ err_2letters:"Type at least 2 letters of the product name.", searching_q:"Searching for “{q}”…",
+ no_result:"No product found for “{q}”. Try another word, or scan the barcode.",
+ results_for:"Results for “{q}”", tap_right:"Tap the right product to analyze it.",
+ paste_first:"Paste the ingredient list first.", pasted_name:"Pasted ingredient list",
+ reading_bc:"Reading the barcode…",
+ bc_fail:"Barcode unreadable. Retake the photo closer, flat and well lit, or type the number.",
+ cam_denied:"Camera access is blocked. Tap the padlock next to the address (or open the browser settings), allow the camera, then reload the page.",
+ cam_none:"No camera found on this device. Use “Take a photo” or “Number or name”.",
+ cam_busy:"Another app is using the camera. Close it, then try again.",
+ cam_https:"The camera only works on a secure address (https://…).",
+ cam_other:"The camera couldn't start ({e}). Use “Take a photo”: your phone will open its camera.",
+ scan_module:"The scan module couldn't load. Check your internet connection, then reload the page.",
+ cam_nobrowser:"This browser doesn't allow camera access here. Use “Take a photo”: your phone will open its camera.",
+ al_name:"Allergen: {x}", al_msg:"The product contains this allergen.",
+ tr_name:"Possible traces: {x}", tr_msg:"The factory handles this allergen: risk of traces.",
+ hi_sugar:"High sugar", mid_sugar:"Moderate sugar", hi_salt:"High salt", mid_salt:"Moderate salt",
+ hi_sat:"High saturated fat", mid_sat:"Moderate saturated fat",
+ hi_msg:"{v} g per 100 g, above the “high” threshold ({hi} g).", mid_msg:"{v} g per 100 g.",
+ cu_name:"In your list: {x}", cu_msg:"You asked to avoid this ingredient.",
+ cu_tr_msg:"The package mentions possible traces of this ingredient.", no_name_prod:"Unnamed product"
+},
+ar:{
+ tagline:"امسح المنتج واعرف ما يهمّ صحتك.",
+ tab_scan:"مسح", tab_profil:"ملفي", tab_hist:"منتجاتي",
+ install_txt:"ثبّت MonScan Santé على شاشتك الرئيسية.", install_btn:"تثبيت", close:"إغلاق",
+ install_android:"ثبّت MonScan Santé على شاشتك الرئيسية كتطبيق حقيقي.",
+ install_ios:"للتثبيت: المس «مشاركة» (المربع مع السهم) ثم «إضافة إلى الشاشة الرئيسية».",
+ cam_start:"المسح بالكاميرا", cam_stop:"إيقاف الكاميرا", cam_hint:"ضع الرمز الشريطي داخل الإطار",
+ photo:"التقاط صورة", type:"الرقم أو الاسم", code_ph:"الرمز الشريطي أو الاسم (مثلاً Nutella)", search:"بحث",
+ paste_sum:"المنتج غير موجود؟ صوّر قائمة مكوناته", ocr_btn:"تصوير المكونات",
+ paste_hint:"أو الصقها بنفسك. تحقّق من النص قبل التحليل.", paste_ph:"قائمة المكونات من العبوة…",
+ paste_btn:"تحليل هذه القائمة", ex_sum:"جرّب بمنتج تجريبي",
+ ex_hint:"منتجات وهمية لاكتشاف التطبيق دون مسح.",
+ who_q:"لمن تتسوّق؟", first_name:"الاسم", first_name_aria:"اسم الشخص", delete:"حذف",
+ profil_title:"ما يخصّ {name}",
+ profil_hint:"حدّد حالات هذا الشخص. يُبرز التحليل ما يجب أن يتجنّبه. تبقى كل البيانات على هذا الهاتف.",
+ custom_title:"مكوّنات أتجنّبها",
+ custom_hint:"أضف كل ما لا يتحمّله هذا الشخص، حتى لو لم يكن في القائمة: فراولة، كيوي، ثوم، ملوّن…",
+ custom_ph:"مثلاً: فراولة", add:"إضافة",
+ sound_label:"صوت واهتزاز التنبيهات",
+ sound_hint:"إنذار عندما يجب تجنّب المنتج، وصفّارتان عند «الحذر»، وصوت مبهج عندما يكون كل شيء جيداً. على iPhone، أوقف الوضع الصامت لسماع الصوت.",
+ test_danger:"تجربة: خطر", test_caution:"حذر", test_ok:"جيد",
+ dvoice_label:"تنبيه صوتي للمنتجات التي يجب تجنّبها",
+ dvoice_hint:"بعد الإنذار، يقول صوت «انتبه!» ويذكر ما يسبّب المشكلة في المنتج.",
+ dvoice_test:"استمع إلى التنبيه الصوتي",
+ display:"العرض", big:"خط كبير", hc:"تباين عالٍ", voice_label:"قراءة النتيجة بصوت عالٍ",
+ display_hint:"لقراءة أسهل في المتجر، خاصة إذا ضعف البصر. يعمل زر «استمع» في كل منتج حتى عند إيقاف القراءة التلقائية.",
+ lang_label:"اللغة",
+ data_title:"بياناتك",
+ data_hint:"تبقى ملفاتك ومفضّلاتك وسجلّك على هذا الهاتف فقط. لا يُرسَل شيء إلى أي أحد. للعثور على منتج، يرسل التطبيق فقط رمزه الشريطي أو اسمه إلى قاعدة Open Food Facts العامة، ولا يرسل أبداً معلوماتك الصحية.",
+ privacy_link:"اقرأ سياسة الخصوصية", wipe:"حذف جميع بياناتي", wipe_confirm:"نعم، احذف كل شيء",
+ wipe_hint:"ستُحذف الملفات والمفضّلات والسجل والإعدادات من هذا الهاتف. المس مرة أخرى للتأكيد.",
+ wipe_done:"تم حذف جميع بياناتك.",
+ fav_title:"مفضّلاتي", fav_empty:"المس «♡ احتفظ» على منتج تثق به لتجده هنا.",
+ hist_title:"آخر المنتجات", hist_empty:"ستظهر هنا المنتجات التي تحلّلها.",
+ back:"→ رجوع", legal_fr_only:"هذه الصفحات القانونية متوفّرة باللغة الفرنسية فقط حالياً.",
+ disclaimer:"يقدّم MonScan Santé معلومات استناداً إلى المكوّنات المعلنة (قاعدتا Open Food Facts وOpen Beauty Facts التشاركيتان). هذا ليس رأياً طبياً: عند الشك، استشر طبيبك أو الصيدلي.",
+ legal_link:"الإشعار القانوني", privacy:"الخصوصية",
+ alt_title:"اختيار أفضل", alt_searching:"أبحث في نفس القسم عن منتجات أفضل لـ{name}…",
+ alt_good:"مناسب لـ{name}", alt_better:"أفضل", alt_none:"لم يُعثر على خيار أفضل في هذا القسم حالياً.",
+ err_digits:"اكتب الأرقام الموجودة تحت الرمز الشريطي (8 أو 13 رقماً).", searching_code:"جارٍ البحث عن المنتج {code}…",
+ offline:"لا يوجد إنترنت: إليك التحليل المحفوظ من آخر مسح.",
+ not_found:"المنتج {code} غير موجود بعد في القاعدة. صوّر قائمة مكوّناته أدناه لتحليله.",
+ add_off:"يمكنك أيضاً إضافته إلى قاعدة Open Food Facts لمساعدة الآخرين.",
+ no_conn:"تعذّر الوصول إلى قاعدة المنتجات. تحقّق من اتصالك بالإنترنت، أو الصق قائمة المكوّنات أدناه.",
+ no_conn2:"تعذّر الوصول إلى قاعدة المنتجات. تحقّق من اتصالك بالإنترنت.",
+ lv0:"معلومة", lv1:"حذر", lv2:"تجنّبه",
+ welcome_title:"جاهز للتسوّق", w1:"اختر ملفك", w2:"امسح الرمز الشريطي", w3:"اقرأ النتيجة",
+ welcome_ready:"ملف {name} جاهز. المس الزر البرتقالي للمسح.",
+ welcome_start:"ابدأ بتبويب «ملفي»: يمكنك إضافة كل فرد من العائلة هناك.",
+ v_avoid:"تجنّبه", v_caution:"بحذر", v_good:"مناسب لـ{name}",
+ v_noprofile:"اختر ملفاً لـ{name} في «ملفي».", v_for:"لـ{name}: {list}", perso_list:"القائمة الشخصية",
+ per100:"لكل 100 غ", sugars:"السكريات", salt:"الملح", satfat:"دهون مشبعة", concerns:"يخصّ: ",
+ none_found:"لم يُعثر على أي مادة مضافة أو مكوّن حسّاس في القائمة.", others:"مواد مضافة أخرى، دون تنبيه معروف",
+ nova1:"خام أو قليل المعالجة", nova2:"مكوّن طهي", nova3:"مُصنَّع", nova4:"فائق التصنيع",
+ fav_on:"♥ في المفضّلة", fav_off:"♡ احتفظ", share:"مشاركة", listen:"استمع",
+ tag_example:"منتج تجريبي", tag_beauty:"مستحضر تجميل", tag_food:"غذائي",
+ contains:"ما يحتويه المنتج", full_ing:"القائمة الكاملة للمكوّنات",
+ no_ing:"لا توجد قائمة مكوّنات في القاعدة لهذا المنتج.",
+ no_name:"بلا اسم", add_person:"+ إضافة شخص", person_n:"شخص {n}", me:"أنا",
+ del_confirm:"نعم، احذف", del_hint:"المس مرة أخرى لحذف {name} وإعداداته.",
+ remove_x:"إزالة {x}", no_custom:"لم تتم إضافة أي مكوّن.", for_whom:"لمن", for_name:"لـ{name}",
+ n_perso:"+ {n} شخصي", no_profile:"لم يتم اختيار ملف", edit:"تعديل", choose_profile:"اختيار الملف",
+ pasted_list:"قائمة ملصقة",
+ sh_avoid:"تجنّبه ✕", sh_caution:"بحذر!", sh_good:"جيد ✓", sh_verdict:"النتيجة لـ{name}: {v}", sh_code:"الرمز الشريطي: {code}",
+ copy:"نسخ النص", copied:"تم النسخ ✓", selected:"تم تحديد النص", remove_fav:"إزالة {x} من المفضّلة",
+ sp_avoid:"يجب تجنّبه", sp_caution:"يُستهلك بحذر", sp_good:"مناسب",
+ sp_full:"{prod}. بالنسبة لـ{name}، هذا المنتج {v}.", sp_attn:" انتبه: {list}.",
+ sp_danger:"انتبه! يجب على {name} تجنّب هذا المنتج.", sp_contains:" يحتوي على: {list}.", sp_test_list:"النتريت، الأسبارتام",
+ ocr_prep:"جارٍ التحضير للقراءة… (قد تستغرق المرة الأولى 20 ثانية)", ocr_reading:"جارٍ قراءة النص… {p}٪",
+ ocr_done:"تمت قراءة النص. صحّحه إن لزم، والتحليل معروض أعلاه.", ocr_name:"قائمة مكوّنات مصوّرة",
+ ocr_unavail:"قراءة الصور غير متاحة هنا. تعمل على النسخة المثبّتة على هاتفك.",
+ ocr_fail:"النص غير مقروء. أعد التصوير بشكل مستوٍ وعن قرب وبإضاءة جيدة، أو الصق القائمة يدوياً.",
+ err_2letters:"اكتب حرفين على الأقل من اسم المنتج.", searching_q:"جارٍ البحث عن «{q}»…",
+ no_result:"لم يُعثر على منتج لـ«{q}». جرّب كلمة أخرى أو امسح الرمز الشريطي.",
+ results_for:"نتائج «{q}»", tap_right:"المس المنتج الصحيح لتحليله.",
+ paste_first:"الصق قائمة المكوّنات أولاً.", pasted_name:"قائمة مكوّنات ملصقة",
+ reading_bc:"جارٍ قراءة الرمز الشريطي…",
+ bc_fail:"الرمز الشريطي غير مقروء. أعد التصوير عن قرب وبشكل مستوٍ وبإضاءة جيدة، أو اكتب الرقم.",
+ cam_denied:"الوصول إلى الكاميرا مرفوض. المس القفل بجانب العنوان (أو إعدادات المتصفح)، واسمح بالكاميرا، ثم أعد تحميل الصفحة.",
+ cam_none:"لم يُعثر على كاميرا في هذا الجهاز. استخدم «التقاط صورة» أو «الرقم أو الاسم».",
+ cam_busy:"الكاميرا مستخدمة من تطبيق آخر. أغلقه ثم حاول مجدداً.",
+ cam_https:"تعمل الكاميرا فقط على عنوان آمن (https://…).",
+ cam_other:"تعذّر تشغيل الكاميرا ({e}). استخدم «التقاط صورة»: سيفتح الهاتف الكاميرا.",
+ scan_module:"تعذّر تحميل وحدة المسح. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.",
+ cam_nobrowser:"هذا المتصفح لا يسمح بالوصول إلى الكاميرا هنا. استخدم «التقاط صورة»: سيفتح الهاتف الكاميرا.",
+ al_name:"مسبّب حساسية: {x}", al_msg:"يحتوي المنتج على مسبّب الحساسية هذا.",
+ tr_name:"آثار محتملة: {x}", tr_msg:"يتعامل المصنع مع مسبّب الحساسية هذا: خطر وجود آثار.",
+ hi_sugar:"سكر مرتفع", mid_sugar:"سكر متوسط", hi_salt:"ملح مرتفع", mid_salt:"ملح متوسط",
+ hi_sat:"دهون مشبعة مرتفعة", mid_sat:"دهون مشبعة متوسطة",
+ hi_msg:"{v} غ لكل 100 غ، فوق حدّ «المرتفع» ({hi} غ).", mid_msg:"{v} غ لكل 100 غ.",
+ cu_name:"في قائمتك: {x}", cu_msg:"طلبتَ تجنّب هذا المكوّن.",
+ cu_tr_msg:"تشير العبوة إلى آثار محتملة لهذا المكوّن.", no_name_prod:"منتج بلا اسم"
+}};
+function t(k,v){
+  let s=T[LANG]&&T[LANG][k]; if(s==null) s=T.fr[k]; if(s==null) s=k;
+  if(v) s=s.replace(/\{(\w+)\}/g,(m,x)=>v[x]!=null?v[x]:m);
+  return s;
+}
+/* Situations de santé et groupes */
+const PL = {
+ en:{diabete:"Diabetes",hypertension:"High blood pressure",cholesterol:"Cholesterol",goutte:"Gout (uric acid)",cancer:"Cancer or history of cancer",reins:"Weak kidneys",asthme:"Asthma",grossesse:"Pregnancy / breastfeeding",enfants:"For a child",gluten:"Gluten",lait:"Milk / lactose",arachide:"Peanuts and tree nuts",oeuf:"Egg",soja:"Soy",sesame:"Sesame",poisson:"Fish",crustaces:"Crustaceans",mollusques:"Molluscs",celeri:"Celery",moutarde:"Mustard",lupin:"Lupin",peau:"Sensitive skin / eczema",vegetarien:"Vegetarian",perso:"Personal list"},
+ ar:{diabete:"السكري",hypertension:"ارتفاع ضغط الدم",cholesterol:"الكوليسترول",goutte:"النقرس (حمض اليوريك)",cancer:"السرطان أو سابقة إصابة",reins:"ضعف الكلى",asthme:"الربو",grossesse:"الحمل / الرضاعة",enfants:"لطفل",gluten:"الغلوتين",lait:"الحليب / اللاكتوز",arachide:"الفول السوداني والمكسّرات",oeuf:"البيض",soja:"الصويا",sesame:"السمسم",poisson:"السمك",crustaces:"القشريات",mollusques:"الرخويات",celeri:"الكرفس",moutarde:"الخردل",lupin:"الترمس",peau:"بشرة حسّاسة / إكزيما",vegetarien:"نباتي",perso:"القائمة الشخصية"}
+};
+const GL = {
+ en:{"Santé":"Health","Moments de vie":"Life stages","Allergies alimentaires":"Food allergies","Peau et choix":"Skin and choices"},
+ ar:{"Santé":"الصحة","Moments de vie":"مراحل الحياة","Allergies alimentaires":"الحساسية الغذائية","Peau et choix":"البشرة والاختيارات"}
+};
+const AN = {
+ en:{lait:"Milk",arachide:"Peanuts / tree nuts"},
+ ar:{lait:"الحليب",arachide:"الفول السوداني / المكسّرات"}
+};
+function pname(k){ return (PL[LANG]&&PL[LANG][k]) || PNAME[k] || k; }
+function gname(g){ return (GL[LANG]&&GL[LANG][g]) || g; }
+function aname(k){ if(LANG==="fr") return ALLERG[k].n; return (AN[LANG]&&AN[LANG][k]) || pname(k); }
+/* Additifs et ingrédients : [nom, explication, messages par profil] */
+const DBT = {
+ "Tartrazine":{en:["Tartrazine","Synthetic yellow colouring. Can trigger reactions in people sensitive to aspirin. The package must warn of a possible effect on children's attention."],ar:["التارترازين","ملوّن أصفر صناعي. قد يسبّب تفاعلات لدى الأشخاص الحسّاسين للأسبرين. يجب أن تحذّر العبوة من تأثير محتمل على انتباه الأطفال."]},
+ "Colorant azoïque":{en:["Azo dye","Synthetic colouring. In Europe, the package must warn of a possible effect on children's activity and attention."],ar:["ملوّن آزو","ملوّن صناعي. في أوروبا، يجب أن تحذّر العبوة من تأثير محتمل على نشاط الأطفال وانتباههم."]},
+ "Carmin (cochenille)":{en:["Carmine (cochineal)","Red colouring made from insects. Allergies have been reported.",{vegetarien:"Made from insects: not vegetarian."}],ar:["الكارمين (القرمز)","ملوّن أحمر مستخرج من الحشرات. سُجّلت حالات حساسية.",{vegetarien:"مصنوع من الحشرات: غير نباتي."}]},
+ "Caramel ammoniacal":{en:["Ammonia caramel","May contain 4-MEI, an impurity classified as possibly carcinogenic by the IARC."],ar:["كراميل أمونياكي","قد يحتوي على 4-MEI، وهي شائبة تصنّفها الوكالة الدولية لأبحاث السرطان كمادة مسرطنة محتملة."]},
+ "Dioxyde de titane":{en:["Titanium dioxide","Banned in food in Europe since 2022 (concerns about DNA damage). Still allowed in cosmetics: avoid inhaling it (sprays, powders)."],ar:["ثاني أكسيد التيتانيوم","ممنوع في الأغذية في أوروبا منذ 2022 (شكوك حول تأثيره على الحمض النووي). لا يزال مسموحاً في مستحضرات التجميل: تجنّب استنشاقه (البخاخات والمساحيق)."]},
+ "Aluminium":{en:["Aluminium","A metal whose exposure should be limited.",{reins:"Weak kidneys clear aluminium poorly."}],ar:["الألمنيوم","معدن يُستحسن الحدّ من التعرّض له.",{reins:"الكلى الضعيفة تتخلّص من الألمنيوم بصعوبة."}]},
+ "Benzoates":{en:["Benzoates","Preservative. With vitamin C (E300) it can form benzene. Possible link with hyperactivity in children."],ar:["البنزوات","مادة حافظة. مع فيتامين C (E300) قد تُكوّن البنزين. صلة محتملة بفرط النشاط لدى الأطفال."]},
+ "Sulfites":{en:["Sulphites","An allergen that must be declared.",{asthme:"Sulphites can trigger an asthma attack."}],ar:["الكبريتيت","مسبّب حساسية يجب التصريح به.",{asthme:"قد يسبّب الكبريتيت نوبة ربو."}]},
+ "Nitrites / nitrates":{en:["Nitrites / nitrates","Preservatives in processed meat. The French food safety agency (ANSES) recommends limiting exposure: a link with colorectal cancer has been established.",{cancer:"Processed meat is classified as carcinogenic by the IARC, especially for the colon. Nitrites contribute to this."}],ar:["النتريت / النترات","مواد حافظة في اللحوم المصنّعة. توصي الوكالة الفرنسية لسلامة الغذاء (ANSES) بالحدّ من التعرّض لها: ثبتت صلتها بسرطان القولون والمستقيم.",{cancer:"تصنّف الوكالة الدولية لأبحاث السرطان اللحوم المصنّعة كمادة مسرطنة مؤكّدة، خاصة للقولون. ويساهم النتريت في ذلك."}]},
+ "TBHQ":{en:["TBHQ","Synthetic antioxidant with a low acceptable daily intake."],ar:["TBHQ","مضاد أكسدة صناعي حدّه اليومي المقبول منخفض."]},
+ "BHA / BHT":{en:["BHA / BHT","Synthetic antioxidants. BHA is a suspected endocrine disruptor and is classified as possibly carcinogenic."],ar:["BHA / BHT","مضادات أكسدة صناعية. يُشتبه في أن BHA مُخلّ بالغدد الصماء، وهو مصنّف كمادة مسرطنة محتملة."]},
+ "Phosphates ajoutés":{en:["Added phosphates","Added phosphates are almost fully absorbed into the blood. In excess they strain the kidneys and are linked to cardiovascular risk."],ar:["فوسفات مضاف","يُمتصّ الفوسفات المضاف بالكامل تقريباً في الدم. الإفراط فيه يُجهد الكلى ويرتبط بخطر الإصابة بأمراض القلب والأوعية."]},
+ "Carraghénanes":{en:["Carrageenan","Seaweed-based thickener, suspected of promoting gut inflammation."],ar:["الكاراجينان","مكثّف مستخرج من الطحالب، يُشتبه في أنه يعزّز التهاب الأمعاء."]},
+ "Émulsifiant":{en:["Emulsifier","Studies from the French NutriNet-Santé cohort link high emulsifier intake with more type 2 diabetes and cardiovascular disease."],ar:["مستحلب","تربط دراسات مجموعة NutriNet-Santé الفرنسية الاستهلاك المرتفع للمستحلبات بزيادة السكري من النوع الثاني وأمراض القلب والأوعية."]},
+ "Glutamate":{en:["Glutamate","Flavour enhancer. Adds sodium and encourages eating saltier food."],ar:["الغلوتامات","مُحسّن نكهة. يضيف الصوديوم ويدفع إلى تناول طعام أكثر ملوحة."]},
+ "Ribonucléotides (inosinate, guanylate)":{en:["Ribonucleotides (inosinate, guanylate)","Flavour enhancers made from purines.",{goutte:"These are purines: the body turns them into uric acid."}],ar:["الريبونوكليوتيدات (إينوزينات، غوانيلات)","مُحسّنات نكهة مصنوعة من البيورينات.",{goutte:"هذه بيورينات: يحوّلها الجسم إلى حمض اليوريك."}]},
+ "Extrait de levure":{en:["Yeast extract","Natural flavour enhancer rich in purines."],ar:["مستخلص الخميرة","مُحسّن نكهة طبيعي غني بالبيورينات."]},
+ "Aliment riche en purines":{en:["Purine-rich food","Rich in purines, which turn into uric acid."],ar:["طعام غني بالبيورينات","غني بالبيورينات التي تتحوّل إلى حمض اليوريك."]},
+ "Fructose ajouté":{en:["Added fructose","A sugar that raises uric acid and triglycerides."],ar:["فركتوز مضاف","سكر يرفع حمض اليوريك والدهون الثلاثية."]},
+ "Pamplemousse":{en:["Grapefruit","Grapefruit changes how many medicines work.",{cancer:"Grapefruit can change the effect of some cancer treatments: ask your doctor.",cholesterol:"Grapefruit can strengthen some statins (simvastatin, atorvastatin): ask your doctor."}],ar:["الجريب فروت","يغيّر الجريب فروت تأثير العديد من الأدوية.",{cancer:"قد يغيّر الجريب فروت تأثير بعض علاجات السرطان: استشر طبيبك.",cholesterol:"قد يقوّي الجريب فروت تأثير بعض أدوية الستاتين (سيمفاستاتين، أتورفاستاتين): استشر طبيبك."}]},
+ "Graisse de coco / coprah":{en:["Coconut / copra fat","Very rich in saturated fat."],ar:["دهن جوز الهند / الكوبرا","غني جداً بالدهون المشبعة."]},
+ "Aspartame":{en:["Aspartame","Classified as “possibly carcinogenic” by the IARC in 2023. Forbidden for people with phenylketonuria.",{diabete:"Contains no sugar, but NutriNet-Santé links sweeteners with more type 2 diabetes. The WHO does not recommend them for weight control."}],ar:["الأسبارتام","صنّفته الوكالة الدولية لأبحاث السرطان «مادة مسرطنة محتملة» عام 2023. ممنوع على المصابين ببيلة الفينيل كيتون.",{diabete:"لا يحتوي على سكر، لكن دراسة NutriNet-Santé تربط المُحلّيات بزيادة السكري من النوع الثاني. ولا توصي منظمة الصحة العالمية بها للتحكّم في الوزن."}]},
+ "Édulcorant intense":{en:["Intense sweetener","Replaces sugar without calories. Long-term effects are still debated.",{diabete:"Doesn't raise blood sugar, but NutriNet-Santé links sweeteners with more type 2 diabetes. The WHO does not recommend them for weight control."}],ar:["مُحلٍّ قوي","يحلّ محلّ السكر دون سعرات. آثاره على المدى الطويل لا تزال موضع نقاش.",{diabete:"لا يرفع سكر الدم، لكن دراسة NutriNet-Santé تربط المُحلّيات بزيادة السكري من النوع الثاني. ولا توصي منظمة الصحة العالمية بها للتحكّم في الوزن."}]},
+ "Polyol":{en:["Polyol","Sugar alcohol. Laxative effect in large amounts.",{diabete:"Raises blood sugar less than sugar, but isn't neutral (especially maltitol)."}],ar:["بوليول","كحول سكّري. له تأثير مليّن بكميات كبيرة.",{diabete:"يرفع سكر الدم أقلّ من السكر، لكنه ليس محايداً (خاصة المالتيتول)."}]},
+ "Sirop de glucose(-fructose)":{en:["Glucose(-fructose) syrup","Added fast sugar.",{diabete:"A fast sugar that raises blood sugar quickly.",goutte:"Glucose-fructose syrup provides fructose, which raises uric acid."}],ar:["شراب الغلوكوز (والفركتوز)","سكر سريع مضاف.",{diabete:"سكر سريع يرفع سكر الدم بسرعة.",goutte:"يوفّر شراب الغلوكوز والفركتوز الفركتوزَ الذي يرفع حمض اليوريك."}]},
+ "Dextrose / maltodextrine":{en:["Dextrose / maltodextrin","Sugar with a very high glycaemic index."],ar:["الدكستروز / المالتودكسترين","سكر ذو مؤشّر جلايسيمي مرتفع جداً."]},
+ "Graisse hydrogénée":{en:["Hydrogenated fat","May contain trans fats, the worst for the heart."],ar:["دهون مهدرجة","قد تحتوي على دهون متحوّلة، وهي الأسوأ للقلب."]},
+ "Huile de palme":{en:["Palm oil","Rich in saturated fat."],ar:["زيت النخيل","غني بالدهون المشبعة."]},
+ "Gélatine":{en:["Gelatine","Animal protein.",{vegetarien:"Made from animal bones and skin: not vegetarian."}],ar:["الجيلاتين","بروتين من أصل حيواني.",{vegetarien:"مستخرج من عظام وجلود الحيوانات: غير نباتي."}]},
+ "Alcool":{en:["Alcohol","Contains alcohol.",{grossesse:"No amount of alcohol is safe during pregnancy.",cancer:"Alcohol is classified as carcinogenic, even in small amounts.",goutte:"Alcohol, especially beer, triggers gout attacks."}],ar:["الكحول","يحتوي على الكحول.",{grossesse:"لا توجد كمية آمنة من الكحول أثناء الحمل.",cancer:"الكحول مصنّف كمادة مسرطنة مؤكّدة، حتى بكميات صغيرة.",goutte:"الكحول، خاصة البيرة، يسبّب نوبات النقرس."}]},
+ "Parabène (propyl / butyl)":{en:["Paraben (propyl / butyl)","Suspected endocrine disruptors. Banned in leave-on products for the nappy area of children under 3."],ar:["البارابين (بروبيل / بوتيل)","يُشتبه في أنها مُخلّة بالغدد الصماء. ممنوعة في المنتجات التي لا تُشطف والمخصّصة لمنطقة الحفاض لدى الأطفال دون 3 سنوات."]},
+ "Parabène (méthyl / éthyl)":{en:["Paraben (methyl / ethyl)","Considered the safest parabens."],ar:["البارابين (ميثيل / إيثيل)","تُعتبر أكثر أنواع البارابين أماناً."]},
+ "Isothiazolinone":{en:["Isothiazolinone","A very common contact allergen. Banned in Europe in leave-on products."],ar:["الإيزوثيازولينون","مسبّب حساسية تلامسية شائع جداً. ممنوع في أوروبا في المنتجات التي لا تُشطف."]},
+ "Phénoxyéthanol":{en:["Phenoxyethanol","Preservative. The French medicines agency (ANSM) advises against it on the nappy area of children under 3."],ar:["الفينوكسي إيثانول","مادة حافظة. تنصح الوكالة الفرنسية للأدوية (ANSM) بعدم استخدامه على منطقة الحفاض لدى الأطفال دون 3 سنوات."]},
+ "Triclosan":{en:["Triclosan","Antibacterial, suspected endocrine disruptor."],ar:["التريكلوسان","مضاد للبكتيريا يُشتبه في أنه مُخلّ بالغدد الصماء."]},
+ "Libérateur de formaldéhyde":{en:["Formaldehyde releaser","Releases formaldehyde, an allergen and irritant classified as carcinogenic."],ar:["مُطلِق للفورمالديهايد","يُطلق الفورمالديهايد، وهو مسبّب حساسية ومهيّج ومصنّف كمادة مسرطنة."]},
+ "Parfum":{en:["Fragrance","A mixture that may contain allergens: the leading cause of cosmetic allergies."],ar:["العطر","خليط قد يحتوي على مسبّبات حساسية: السبب الأول لحساسية مستحضرات التجميل."]},
+ "Allergène de parfum":{en:["Fragrance allergen","An allergen that must be declared."],ar:["مسبّب حساسية عطري","مسبّب حساسية يجب التصريح به."]},
+ "Sodium lauryl sulfate":{en:["Sodium lauryl sulphate","Detergent that irritates sensitive skin."],ar:["كبريتات لوريل الصوديوم","منظّف يهيّج البشرة الحسّاسة."]},
+ "Silicone cyclique":{en:["Cyclic silicone","Restricted in Europe: persistent in the environment; D4 is suspected of being toxic to reproduction."],ar:["سيليكون حلقي","مقيّد في أوروبا: يبقى طويلاً في البيئة، ويُشتبه في أن D4 سامّ للإنجاب."]},
+ "Filtre UV controversé":{en:["Controversial UV filter","Sunscreen filter suspected of being an endocrine disruptor."],ar:["فلتر أشعة فوق بنفسجية مثير للجدل","فلتر واقٍ من الشمس يُشتبه في أنه مُخلّ بالغدد الصماء."]},
+ "Sel d'aluminium":{en:["Aluminium salt","Antiperspirant. Avoid on damaged skin or right after shaving."],ar:["ملح الألمنيوم","مضاد للتعرّق. تجنّبه على البشرة المتضرّرة أو مباشرة بعد الحلاقة."]},
+ "Rétinoïde":{en:["Retinoid","Vitamin A derivative.",{grossesse:"Retinoids are not recommended during pregnancy."}],ar:["الريتينويد","مشتق من فيتامين A.",{grossesse:"لا يُنصح بالريتينويدات أثناء الحمل."}]},
+ "Acide salicylique":{en:["Salicylic acid","Exfoliant. Not recommended at high doses during pregnancy or for children under 3."],ar:["حمض الساليسيليك","مقشّر. لا يُنصح به بجرعات عالية أثناء الحمل ولدى الأطفال دون 3 سنوات."]},
+ "Hydroquinone":{en:["Hydroquinone","Banned in cosmetics in Europe; prescription only."],ar:["الهيدروكينون","ممنوع في مستحضرات التجميل في أوروبا، ولا يُستخدم إلا بوصفة طبية."]},
+ "Talc":{en:["Talc","Classified as probably carcinogenic by the IARC in 2024. Avoid inhaling it (baby powders)."],ar:["التلك","صنّفته الوكالة الدولية لأبحاث السرطان عام 2024 كمادة يُرجَّح أنها مسرطنة. تجنّب استنشاقه (بودرة الأطفال)."]}
+};
+function dbL(a){
+  const tr=DBT[a.n]&&DBT[a.n][LANG];
+  if(LANG==="fr"||!tr) return {n:a.n,w:a.w,m:a.m};
+  return {n:tr[0],w:tr[1],m:tr[2]||{}};
+}
+const ENT = {
+ en:{e100:"Curcumin",e133:"Brilliant blue",e160a:"Carotenes",e160c:"Paprika extract",e170:"Calcium carbonate",e202:"Potassium sorbate",e260:"Acetic acid",e270:"Lactic acid",e290:"Carbon dioxide",e296:"Malic acid",e300:"Vitamin C",e301:"Sodium ascorbate",e306:"Vitamin E",e316:"Sodium erythorbate",e322:"Lecithins",e330:"Citric acid",e331:"Sodium citrates",e332:"Potassium citrates",e406:"Agar",e410:"Locust bean gum",e412:"Guar gum",e414:"Gum arabic",e415:"Xanthan gum",e440:"Pectins",e450:"Diphosphates",e464:"HPMC",e500:"Sodium carbonates",e501:"Potassium carbonates",e503:"Ammonium carbonates",e504:"Magnesium carbonates",e509:"Calcium chloride",e551:"Silica",e903:"Carnauba wax",e1422:"Modified starch",e1442:"Modified starch"},
+ ar:{e100:"الكركمين",e133:"الأزرق اللامع",e160a:"الكاروتينات",e160c:"مستخلص الفلفل الحلو",e170:"كربونات الكالسيوم",e202:"سوربات البوتاسيوم",e260:"حمض الأسيتيك",e270:"حمض اللاكتيك",e290:"ثاني أكسيد الكربون",e296:"حمض الماليك",e300:"فيتامين C",e301:"أسكوربات الصوديوم",e306:"فيتامين E",e316:"إريثوربات الصوديوم",e322:"الليسيثين",e330:"حمض الستريك",e331:"سترات الصوديوم",e332:"سترات البوتاسيوم",e406:"الأغار",e410:"صمغ الخرّوب",e412:"صمغ الغوار",e414:"الصمغ العربي",e415:"صمغ الزانثان",e440:"البكتين",e450:"ثنائي الفوسفات",e464:"HPMC",e500:"كربونات الصوديوم",e501:"كربونات البوتاسيوم",e503:"كربونات الأمونيوم",e504:"كربونات المغنيسيوم",e509:"كلوريد الكالسيوم",e551:"السيليكا",e903:"شمع الكرنوبا",e1422:"نشا معدّل",e1442:"نشا معدّل"}
+};
+function ename(c){ return (ENT[LANG]&&ENT[LANG][c]) || ENAMES[c] || ""; }
+const EXN = {
+ en:{"0000000000001":"Sugar-free cola","0000000000002":"Premium cooked ham","0000000000003":"Sour gummy sweets","0000000000004":"Chocolate-filled biscuits","0000000000006":"Chicken stock cube","0000000000005":"Scented moisturising cream"},
+ ar:{"0000000000001":"كولا بدون سكر","0000000000002":"جامبون مطبوخ","0000000000003":"حلوى جيلاتينية حامضة","0000000000004":"بسكويت محشو بالشوكولاتة","0000000000006":"مكعّب مرق الدجاج","0000000000005":"كريم مرطّب معطّر"}
+};
+function exname(code,fallback){ return (EXN[LANG]&&EXN[LANG][code]) || fallback; }
 /* ---------- Profils ---------- */
 const PROFILS = [
   {g:"Santé", items:[["diabete","Diabète"],["hypertension","Tension élevée"],["cholesterol","Cholestérol"],["goutte","Goutte (acide urique)"],["cancer","Cancer ou antécédent"],["reins","Reins fragiles"],["asthme","Asthme"]]},
@@ -540,7 +918,7 @@ const store = {
 /* Famille : plusieurs personnes, chacune avec ses situations et sa liste perso */
 let fam = store.get("pc_fam", null);
 if(!fam || !Array.isArray(fam.members) || !fam.members.length){
-  fam = {active:"m1", members:[{id:"m1", name:"Moi", tags:store.get("pc_profil",[]), custom:[]}]};
+  fam = {active:"m1", members:[{id:"m1", name:t("me"), tags:store.get("pc_profil",[]), custom:[]}]};
 }
 function member(){ return fam.members.find(m=>m.id===fam.active) || fam.members[0]; }
 let profil=[], custom=[];
@@ -580,12 +958,12 @@ function analyse(prod){
     const hitK = a.k.some(k=>hasKw(text,k));
     if(!hitC.length && !hitK) return;
     hitC.forEach(c=>used.add(c)); [...codes].forEach(x=>{if(a.c.some(c=>x.startsWith(c)))used.add(x)});
-    let lvl=0, who=[], msg=a.w;
-    profil.forEach(p=>{ if(a.p&&a.p[p]!=null){ if(a.p[p]>lvl) lvl=a.p[p]; who.push(p); if(a.m&&a.m[p]) msg=a.m[p]; } });
+    const L=dbL(a); let lvl=0, who=[], msg=L.w;
+    profil.forEach(p=>{ if(a.p&&a.p[p]!=null){ if(a.p[p]>lvl) lvl=a.p[p]; who.push(p); if(L.m&&L.m[p]) msg=L.m[p]; } });
     if(!who.length) lvl=Math.min(a.g,1);
     if(a.g===2) lvl=2;
-    const extra = who.length && a.m && who.some(p=>a.m[p]) ? a.w : "";
-    finds.push({code:hitC.join(", ").toUpperCase(),name:a.n,lvl,msg,extra:extra!==msg?extra:"",who});
+    const extra = who.length && L.m && who.some(p=>L.m[p]) ? L.w : "";
+    finds.push({code:hitC.join(", ").toUpperCase(),name:L.n,item:L.n,lvl,msg,extra:extra!==msg?extra:"",who});
   });
 
   if(type!=="beauty"){
@@ -594,26 +972,25 @@ function analyse(prod){
       const inTag=(prod.allTags||[]).some(t=>a.t.includes(t));
       const inTxt=a.k.some(k=>hasKw(clean,k));
       const inTr=(prod.traceTags||[]).some(t=>a.t.includes(t))||a.k.some(k=>hasKw(traces,k));
-      if(inTag||inTxt) finds.push({code:"",name:"Allergène : "+a.n,lvl:2,msg:"Le produit contient cet allergène.",who:[p]});
-      else if(inTr) finds.push({code:"",name:"Traces possibles : "+a.n,lvl:1,msg:"L'usine manipule cet allergène : risque de traces.",who:[p]});
+      if(inTag||inTxt) finds.push({code:"",name:t("al_name",{x:aname(p)}),item:aname(p),lvl:2,msg:t("al_msg"),who:[p]});
+      else if(inTr) finds.push({code:"",name:t("tr_name",{x:aname(p)}),item:aname(p),lvl:1,msg:t("tr_msg"),who:[p]});
     });
     const n=prod.nut||{};
-    const rule=(p,v,hi,mid,label,unit)=>{
+    const rule=(p,v,hi,mid,kh,km)=>{
       if(!profil.includes(p)||v==null) return;
-      if(v>hi) finds.push({code:"",name:label+" élevé",lvl:2,msg:`${fmt(v)} ${unit} pour 100 g, au-dessus du seuil « élevé » (${hi} ${unit}).`,who:[p]});
-      else if(v>mid) finds.push({code:"",name:label+" modéré",lvl:1,msg:`${fmt(v)} ${unit} pour 100 g.`,who:[p]});
+      if(v>hi) finds.push({code:"",name:t(kh),item:t(kh),lvl:2,msg:t("hi_msg",{v:fmt(v),hi:fmt(hi)}),who:[p]});
+      else if(v>mid) finds.push({code:"",name:t(km),item:t(km),lvl:1,msg:t("mid_msg",{v:fmt(v)}),who:[p]});
     };
-    rule("diabete",n.sugars,22.5,5,"Sucre","g");
-    rule("hypertension",n.salt,1.5,0.3,"Sel","g");
-    rule("reins",n.salt,1.5,0.3,"Sel","g");
-    rule("cholesterol",n.sat,5,1.5,"Graisses saturées","g");
-    finds.forEach(f=>{if(f.name.startsWith("Graisses saturées")) f.name=f.name.replace("élevé","élevées").replace("modéré","modérées")});
+    rule("diabete",n.sugars,22.5,5,"hi_sugar","mid_sugar");
+    rule("hypertension",n.salt,1.5,0.3,"hi_salt","mid_salt");
+    rule("reins",n.salt,1.5,0.3,"hi_salt","mid_salt");
+    rule("cholesterol",n.sat,5,1.5,"hi_sat","mid_sat");
   }
 
   custom.forEach(c=>{
     const k=norm(c).trim(); if(!k) return;
-    if(hasKw(text,k)) finds.push({code:"",name:"Dans votre liste : "+c,lvl:2,msg:"Vous avez demandé à éviter cet ingrédient.",who:["perso"]});
-    else if(hasKw(traces,k)) finds.push({code:"",name:"Traces possibles : "+c,lvl:1,msg:"L'emballage signale de possibles traces de cet ingrédient.",who:["perso"]});
+    if(hasKw(text,k)) finds.push({code:"",name:t("cu_name",{x:c}),item:c,lvl:2,msg:t("cu_msg"),who:["perso"]});
+    else if(hasKw(traces,k)) finds.push({code:"",name:t("tr_name",{x:c}),item:c,lvl:1,msg:t("cu_tr_msg"),who:["perso"]});
   });
 
   const others=[...codes].filter(c=>!used.has(c)).sort();
@@ -621,7 +998,7 @@ function analyse(prod){
   const max = finds.reduce((m,f)=>Math.max(m,f.lvl),0);
   return {finds,others,max,nAdd:codes.size};
 }
-const fmt=v=>(Math.round(v*10)/10).toString().replace(".",",");
+const fmt=v=>{const s=(Math.round(v*10)/10).toString(); return LANG==="fr"?s.replace(".",","):s;};
 
 
 let son = store.get("pc_son", true);
@@ -677,7 +1054,7 @@ async function getJSON(url,ms){
   finally{clearTimeout(t)}
 }
 const num=v=>(v===undefined||v===null||v==="")?null:Number(v);
-const FIELDS="code,product_name,product_name_fr,brands,ingredients_text_fr,ingredients_text,additives_tags,allergens_tags,traces_tags,nutriments,image_front_small_url,nutriscore_grade,nova_group";
+const FIELDS="code,product_name,product_name_fr,product_name_en,product_name_ar,brands,ingredients_text_fr,ingredients_text,additives_tags,allergens_tags,traces_tags,nutriments,image_front_small_url,nutriscore_grade,nova_group";
 /* Mémoire hors ligne : les derniers produits trouvés restent consultables sans internet */
 let pcache = store.get("pc_cache",{});
 function cachePut(p){ if(!p.code) return; pcache[p.code]={...p,t:Date.now()};
@@ -685,7 +1062,7 @@ function cachePut(p){ if(!p.code) return; pcache[p.code]={...p,t:Date.now()};
 const SOURCES=[["food","https://world.openfoodfacts.org"],["beauty","https://world.openbeautyfacts.org"]];
 function toProd(p,type,code){
   const nu=p.nutriments||{};
-  return {code:code||p.code,type,name:p.product_name_fr||p.product_name||"Produit sans nom",brand:p.brands||"",
+  return {code:code||p.code,type,name:p["product_name_"+LANG]||p.product_name_fr||p.product_name||t("no_name_prod"),brand:p.brands||"",
     ing:p.ingredients_text_fr||p.ingredients_text||"",img:p.image_front_small_url,
     addTags:p.additives_tags,allTags:p.allergens_tags,traceTags:p.traces_tags,cats:p.categories_tags||[],
     ns:/^[a-e]$/.test(p.nutriscore_grade||"")?p.nutriscore_grade:null, nova:[1,2,3,4].includes(+p.nova_group)?+p.nova_group:null,
@@ -700,7 +1077,7 @@ async function loadAlternatives(prod,r){
   if(prod.example||r.max===0||!cats.length){box.remove();return}
   const token=++altToken;
   const who=esc(member().name);
-  box.innerHTML=`<div class="label">Plutôt choisir</div><p class="hint">Je cherche dans le même rayon des produits meilleurs pour ${who}…</p>`;
+  box.innerHTML=`<div class="label">${t("alt_title")}</div><p class="hint">${t("alt_searching",{name:who})}</p>`;
   await new Promise(res=>setTimeout(res,500));
   if(token!==altToken) return;
   const base=(SOURCES.find(s=>s[0]===prod.type)||SOURCES[0])[1];
@@ -718,8 +1095,8 @@ async function loadAlternatives(prod,r){
       .sort((x,y)=>x.a.max-y.a.max || x.a.finds.filter(f=>f.lvl>0).length-y.a.finds.filter(f=>f.lvl>0).length)
       .slice(0,3);
     if(good.length){
-      const col=["var(--ok)","var(--warn)"], lab=["Bon pour "+member().name,"Mieux"];
-      box.innerHTML=`<div class="label">Plutôt choisir</div>`+good.map(x=>`
+      const col=["var(--ok)","var(--warn)"], lab=[t("alt_good",{name:member().name}),t("alt_better")];
+      box.innerHTML=`<div class="label">${t("alt_title")}</div>`+good.map(x=>`
         <button type="button" class="alt" data-code="${esc(x.q.code)}">
           ${x.q.img?`<img src="${esc(x.q.img)}" alt="">`:`<span class="ph">◫</span>`}
           <span class="nm"><b>${esc(x.q.name)}</b><span>${esc(x.q.brand)}</span></span>
@@ -729,14 +1106,14 @@ async function loadAlternatives(prod,r){
       return;
     }
   }
-  box.innerHTML=`<div class="label">Plutôt choisir</div><p class="hint">Pas de meilleure option trouvée dans ce rayon pour l'instant.</p>`;
+  box.innerHTML=`<div class="label">${t("alt_title")}</div><p class="hint">${t("alt_none")}</p>`;
 }
 async function lookup(code){
   code=String(code).replace(/\D/g,"");
-  if(code.length<6){showStatus("err","Tapez les chiffres situés sous le code-barres (8 ou 13 chiffres).");return}
-  if(EXEMPLES[code]){render({code,...EXEMPLES[code],example:true});return}
+  if(code.length<6){showStatus("err",t("err_digits"));return}
+  if(EXEMPLES[code]){render({code,...EXEMPLES[code],name:exname(code,EXEMPLES[code].name),example:true});return}
   document.getElementById("result").innerHTML="";
-  showStatus("info","Recherche du produit "+code+"…");
+  showStatus("info",t("searching_code",{code}));
   let reached=false;
   for(const [type,base] of SOURCES){
     try{
@@ -746,35 +1123,35 @@ async function lookup(code){
   }
   if(!reached && pcache[code]){
     render({...pcache[code],offline:true});
-    showStatus("info","Pas d'internet : voici l'analyse enregistrée lors de votre dernier scan.");
+    showStatus("info",t("offline"));
     return;
   }
   if(reached){
-    showStatus("err","Le produit "+code+" n'est pas encore dans la base. Photographiez sa liste d'ingrédients ci-dessous pour l'analyser.");
+    showStatus("err",t("not_found",{code}));
     const s=document.getElementById("status"), a=document.createElement("a");
     a.href="https://world.openfoodfacts.org/cgi/product.pl?type=add&code="+code; a.target="_blank"; a.rel="noopener";
-    a.textContent="Vous pouvez aussi l'ajouter à la base Open Food Facts pour aider les autres.";
+    a.textContent=t("add_off");
     s.appendChild(document.createElement("br")); s.appendChild(a);
   }
-  else showStatus("err","Pas de connexion à la base de produits. Vérifiez votre connexion internet, ou collez la liste d'ingrédients ci-dessous.");
+  else showStatus("err",t("no_conn"));
   document.getElementById("pasteBox").open=true;
 }
 
 /* ---------- Affichage ---------- */
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const LV=["Info","Prudence","À éviter"];
+const LV=()=>[t("lv0"),t("lv1"),t("lv2")];
 let current=null;
 
 function renderWelcome(){
   document.getElementById("result").innerHTML=`
   <div class="card">
-    <h3>Prêt à faire vos courses</h3>
+    <h3>${t("welcome_title")}</h3>
     <div class="welcome">
-      <div><b>1</b>Choisissez votre profil</div>
-      <div><b>2</b>Scannez le code-barres</div>
-      <div><b>3</b>Lisez le verdict</div>
+      <div><b>1</b>${t("w1")}</div>
+      <div><b>2</b>${t("w2")}</div>
+      <div><b>3</b>${t("w3")}</div>
     </div>
-    <p class="hint">${(profil.length||custom.length)?"Le profil de "+esc(member().name)+" est prêt. Touchez le bouton orange pour scanner.":"Commencez par l'onglet « Mon profil » : vous pouvez y ajouter chaque personne de la famille."}</p>
+    <p class="hint">${(profil.length||custom.length)?t("welcome_ready",{name:esc(member().name)}):t("welcome_start")}</p>
   </div>`;
 }
 
@@ -782,41 +1159,41 @@ function render(prod,opts){
   opts=opts||{};
   current=prod; hideStatus();
   const r=analyse(prod);
-  const pnames=profil.map(p=>PNAME[p]).join(", ");
+  const pnames=profil.map(p=>pname(p)).join(LANG==="ar"?"، ":", ");
   const sym = r.max===2?"✕":r.max===1?"!":"✓";
-  const vt = r.max===2?"À éviter":r.max===1?"Avec prudence":"Bon pour "+esc(member().name);
+  const vt = r.max===2?t("v_avoid"):r.max===1?t("v_caution"):t("v_good",{name:esc(member().name)});
   const tot=profil.length+custom.length;
-  const vs = !tot?"Choisissez un profil pour "+esc(member().name)+" dans « Mon profil ».":"Pour "+esc(member().name)+" : "+esc([pnames,custom.length?"liste perso":""].filter(Boolean).join(", "));
+  const vs = !tot?t("v_noprofile",{name:esc(member().name)}):t("v_for",{name:esc(member().name),list:esc([pnames,custom.length?t("perso_list"):""].filter(Boolean).join(LANG==="ar"?"، ":", "))});
   const nut=prod.nut;
   const bar=(v,hi,mid)=>{if(v==null) return ""; const pct=Math.min(100,v/hi*100); const col=v>hi?"var(--bad)":v>mid?"var(--warn)":"var(--ok)"; return `<div class="bar"><i style="width:${Math.max(pct,3)}%;background:${col}"></i></div>`};
   const nutHtml = nut && (nut.sugars!=null||nut.salt!=null||nut.sat!=null) ? `
-    <div class="label">Pour 100 g</div>
+    <div class="label">${t("per100")}</div>
     <div class="nutri">
-      <div class="nut"><span class="v">${nut.sugars!=null?fmt(nut.sugars)+" g":"–"}</span><span class="n">Sucres</span>${bar(nut.sugars,22.5,5)}</div>
-      <div class="nut"><span class="v">${nut.salt!=null?fmt(nut.salt)+" g":"–"}</span><span class="n">Sel</span>${bar(nut.salt,1.5,0.3)}</div>
-      <div class="nut"><span class="v">${nut.sat!=null?fmt(nut.sat)+" g":"–"}</span><span class="n">Gras saturés</span>${bar(nut.sat,5,1.5)}</div>
+      <div class="nut"><span class="v">${nut.sugars!=null?fmt(nut.sugars)+" g":"–"}</span><span class="n">${t("sugars")}</span>${bar(nut.sugars,22.5,5)}</div>
+      <div class="nut"><span class="v">${nut.salt!=null?fmt(nut.salt)+" g":"–"}</span><span class="n">${t("salt")}</span>${bar(nut.salt,1.5,0.3)}</div>
+      <div class="nut"><span class="v">${nut.sat!=null?fmt(nut.sat)+" g":"–"}</span><span class="n">${t("satfat")}</span>${bar(nut.sat,5,1.5)}</div>
     </div>`:"";
   const fHtml = r.finds.length? `<ul class="finds">${r.finds.map(f=>`
     <li class="find s${f.lvl}">
-      <div class="t">${f.code?`<span class="e">${esc(f.code)}</span>`:""}<span>${esc(f.name)}</span><span class="lvl">${LV[f.lvl]}</span></div>
+      <div class="t">${f.code?`<span class="e">${esc(f.code)}</span>`:""}<span>${esc(f.name)}</span><span class="lvl">${LV()[f.lvl]}</span></div>
       <p>${esc(f.msg)}</p>${f.extra?`<p class="for">${esc(f.extra)}</p>`:""}
-      ${f.who.length?`<div class="for">Concerne : <b>${esc(f.who.map(p=>PNAME[p]).join(", "))}</b></div>`:""}
-    </li>`).join("")}</ul>` : `<p class="hint">Aucun additif ni ingrédient sensible repéré dans la liste.</p>`;
-  const oHtml = r.others.length?`<div class="label">Autres additifs, sans alerte connue</div><div class="others">${r.others.map(c=>`<span>${c.toUpperCase()}${ENAMES[c]?" · "+esc(ENAMES[c]):""}</span>`).join("")}</div>`:"";
+      ${f.who.length?`<div class="for">${t("concerns")}<b>${esc(f.who.map(p=>pname(p)).join(LANG==="ar"?"، ":", "))}</b></div>`:""}
+    </li>`).join("")}</ul>` : `<p class="hint">${t("none_found")}</p>`;
+  const oHtml = r.others.length?`<div class="label">${t("others")}</div><div class="others">${r.others.map(c=>`<span>${c.toUpperCase()}${ename(c)?" · "+esc(ename(c)):""}</span>`).join("")}</div>`:"";
   const NSC={a:"#038141",b:"#85bb2f",c:"#e5b700",d:"#ee8100",e:"#e63e11"};
   const NOVC={1:"#1a9a3b",2:"#c9a400",3:"#e86b00",4:"#d42020"};
-  const NOVL={1:"Brut ou peu transformé",2:"Ingrédient culinaire",3:"Transformé",4:"Ultra-transformé"};
+  const NOVL={1:t("nova1"),2:t("nova2"),3:t("nova3"),4:t("nova4")};
   const badges = (prod.ns||prod.nova)?`<div class="badges">
       ${prod.ns?`<span class="ns"><b style="background:${NSC[prod.ns]}">${prod.ns.toUpperCase()}</b>Nutri-Score</span>`:""}
       ${prod.nova?`<span class="ns"><b style="background:${NOVC[prod.nova]}">${prod.nova}</b>NOVA · ${NOVL[prod.nova]}</span>`:""}
     </div>`:"";
   const isFav = !!prod.code && favs.some(f=>f.code===prod.code);
   const actions = `<div class="actions">
-      ${prod.code&&!prod.example?`<button type="button" class="btn" id="favBtn" aria-pressed="${isFav}">${isFav?"♥ Dans mes favoris":"♡ Garder"}</button>`:""}
+      ${prod.code&&!prod.example?`<button type="button" class="btn" id="favBtn" aria-pressed="${isFav}">${isFav?t("fav_on"):t("fav_off")}</button>`:""}
       <button type="button" class="btn" id="shareBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Partager</button>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>${t("share")}</button>
       ${"speechSynthesis" in window?`<button type="button" class="btn" id="speakBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>Écouter</button>`:""}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>${t("listen")}</button>`:""}
     </div><div class="sharebox" id="shareBox" hidden></div>`;
   document.getElementById("result").innerHTML=`
   <article class="result" aria-live="polite">
@@ -824,7 +1201,7 @@ function render(prod,opts){
     <div class="r-head">
       ${prod.img?`<img src="${esc(prod.img)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'?'}))">`:`<div class="ph">${prod.type==="beauty"?"✿":"◫"}</div>`}
       <div class="r-meta">
-        ${prod.example?`<span class="tag">Produit d'exemple</span>`:`<span class="tag">${prod.type==="beauty"?"Cosmétique":"Alimentaire"}</span>`}
+        ${prod.example?`<span class="tag">${t("tag_example")}</span>`:`<span class="tag">${prod.type==="beauty"?t("tag_beauty"):t("tag_food")}</span>`}
         <h2>${esc(prod.name)}</h2>
         ${prod.brand&&!prod.example?`<span class="sub">${esc(prod.brand)}</span>`:""}
         ${prod.code&&!prod.example?`<span class="code">${esc(prod.code)}</span>`:""}
@@ -834,11 +1211,11 @@ function render(prod,opts){
       ${badges}
       ${actions}
       ${nutHtml}
-      <div class="label">Ce que contient le produit</div>
+      <div class="label">${t("contains")}</div>
       ${fHtml}
       ${(!prod.example&&r.max>0&&(prod.cats||[]).length)?`<div class="alts" id="altBox"></div>`:""}
       ${oHtml}
-      ${prod.ing?`<details class="more"><summary>Liste complète des ingrédients</summary><p>${esc(prod.ing)}</p></details>`:`<p class="hint">Liste d'ingrédients absente de la base pour ce produit.</p>`}
+      ${prod.ing?`<details class="more"><summary>${t("full_ing")}</summary><p>${esc(prod.ing)}</p></details>`:`<p class="hint">${t("no_ing")}</p>`}
     </div>
   </article>`;
   wireActions(prod,r,vt);
@@ -869,36 +1246,36 @@ function switchMember(id){
 let delArmed=false;
 function renderMembers(){
   const box=document.getElementById("members");
-  box.innerHTML=fam.members.map(m=>`<button type="button" data-id="${m.id}" aria-pressed="${m.id===fam.active}">${esc(m.name||"Sans nom")}</button>`).join("")
-    + (fam.members.length<8?`<button type="button" class="add" id="addMember">+ Ajouter une personne</button>`:"");
+  box.innerHTML=fam.members.map(m=>`<button type="button" data-id="${m.id}" aria-pressed="${m.id===fam.active}">${esc(m.name||t("no_name"))}</button>`).join("")
+    + (fam.members.length<8?`<button type="button" class="add" id="addMember">${t("add_person")}</button>`:"");
   box.querySelectorAll("[data-id]").forEach(b=>b.addEventListener("click",()=>switchMember(b.dataset.id)));
   const add=document.getElementById("addMember");
   if(add) add.addEventListener("click",()=>{
     const id="m"+Date.now().toString(36);
-    fam.members.push({id,name:"Personne "+(fam.members.length+1),tags:[],custom:[]});
+    fam.members.push({id,name:t("person_n",{n:fam.members.length+1}),tags:[],custom:[]});
     switchMember(id);
     const n=document.getElementById("memberName"); n.focus(); n.select();
   });
   document.getElementById("memberName").value=member().name;
   const del=document.getElementById("delMember"), hint=document.getElementById("delHint");
-  delArmed=false; del.textContent="Supprimer"; del.hidden=fam.members.length<2; hint.hidden=true;
+  delArmed=false; del.textContent=t("delete"); del.hidden=fam.members.length<2; hint.hidden=true;
 }
 document.getElementById("memberName").addEventListener("input",e=>{
-  member().name=e.target.value.trim()||"Sans nom"; saveFam();
+  member().name=e.target.value.trim()||t("no_name"); saveFam();
   document.querySelectorAll("#members [aria-pressed=true]").forEach(b=>b.textContent=member().name);
-  document.getElementById("profilTitle").textContent="Ce qui concerne "+member().name;
+  document.getElementById("profilTitle").textContent=t("profil_title",{name:member().name});
   refreshAfterProfile();
 });
 document.getElementById("delMember").addEventListener("click",()=>{
   const del=document.getElementById("delMember"), hint=document.getElementById("delHint");
-  if(!delArmed){ delArmed=true; del.textContent="Oui, supprimer"; hint.textContent="Touchez encore pour supprimer "+member().name+" et ses réglages."; hint.hidden=false; return; }
+  if(!delArmed){ delArmed=true; del.textContent=t("del_confirm"); hint.textContent=t("del_hint",{name:member().name}); hint.hidden=false; return; }
   fam.members=fam.members.filter(m=>m.id!==fam.active);
   switchMember(fam.members[0].id);
 });
 function renderCustom(){
   const box=document.getElementById("customList");
-  box.innerHTML=custom.length?custom.map((c,i)=>`<span class="cchip">${esc(c)}<button type="button" data-i="${i}" aria-label="Retirer ${esc(c)}">×</button></span>`).join("")
-    :`<p class="hint">Aucun ingrédient ajouté.</p>`;
+  box.innerHTML=custom.length?custom.map((c,i)=>`<span class="cchip">${esc(c)}<button type="button" data-i="${i}" aria-label="${esc(t("remove_x",{x:c}))}">×</button></span>`).join("")
+    :`<p class="hint">${t("no_custom")}</p>`;
   box.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
     custom.splice(+b.dataset.i,1); saveFam(); renderCustom(); refreshAfterProfile();
   }));
@@ -911,10 +1288,10 @@ document.getElementById("customForm").addEventListener("submit",e=>{
 });
 function renderProfil(){
   renderMembers();
-  document.getElementById("profilTitle").textContent="Ce qui concerne "+member().name;
+  document.getElementById("profilTitle").textContent=t("profil_title",{name:member().name});
   const box=document.getElementById("profileGroups");
-  box.innerHTML=PROFILS.map(g=>`<div class="group"><div class="label">${g.g}</div><div class="chips">${
-    g.items.map(([k,l])=>`<label class="chip"><input type="checkbox" id="p_${k}" value="${k}" ${profil.includes(k)?"checked":""}><span>${l}</span></label>`).join("")}</div></div>`).join("");
+  box.innerHTML=PROFILS.map(g=>`<div class="group"><div class="label">${esc(gname(g.g))}</div><div class="chips">${
+    g.items.map(([k,l])=>`<label class="chip"><input type="checkbox" id="p_${k}" value="${k}" ${profil.includes(k)?"checked":""}><span>${esc(pname(k))}</span></label>`).join("")}</div></div>`).join("");
   box.querySelectorAll("input").forEach(i=>i.addEventListener("change",()=>{
     member().tags=[...box.querySelectorAll("input:checked")].map(x=>x.value);
     syncActive(); saveFam(); refreshAfterProfile();
@@ -925,11 +1302,11 @@ function renderProfil(){
 function renderWho(){
   const w=document.getElementById("whoSummary");
   const sel = fam.members.length>1
-    ? `<select id="whoSelect" aria-label="Pour qui">${fam.members.map(m=>`<option value="${m.id}" ${m.id===fam.active?"selected":""}>Pour ${esc(m.name)}</option>`).join("")}</select>`
-    : `<span class="pill mem">Pour ${esc(member().name)}</span>`;
-  const tags = profil.map(p=>`<span class="pill">${esc(PNAME[p])}</span>`).join("") + (custom.length?`<span class="pill">+ ${custom.length} perso</span>`:"");
-  w.innerHTML = sel + (tags || `<span>Aucun profil choisi</span>`)
-    + `<button type="button" id="editProfil">${(profil.length||custom.length)?"Modifier":"Choisir le profil"}</button>`;
+    ? `<select id="whoSelect" aria-label="${t("for_whom")}">${fam.members.map(m=>`<option value="${m.id}" ${m.id===fam.active?"selected":""}>${t("for_name",{name:esc(m.name)})}</option>`).join("")}</select>`
+    : `<span class="pill mem">${t("for_name",{name:esc(member().name)})}</span>`;
+  const tags = profil.map(p=>`<span class="pill">${esc(pname(p))}</span>`).join("") + (custom.length?`<span class="pill">${t("n_perso",{n:custom.length})}</span>`:"");
+  w.innerHTML = sel + (tags || `<span>${t("no_profile")}</span>`)
+    + `<button type="button" id="editProfil">${(profil.length||custom.length)?t("edit"):t("choose_profile")}</button>`;
   document.getElementById("editProfil").addEventListener("click",()=>selectTab("profil"));
   const s=document.getElementById("whoSelect"); if(s) s.addEventListener("change",()=>switchMember(s.value));
 }
@@ -937,7 +1314,7 @@ function renderHist(){
   const ul=document.getElementById("histList");
   document.getElementById("histEmpty").hidden=hist.length>0;
   const col=["var(--ok)","var(--warn)","var(--bad)"];
-  ul.innerHTML=hist.map((h,i)=>`<li><button type="button" data-i="${i}"><span class="dot" style="background:${col[h.max]}"></span><span class="nm">${esc(h.name)}</span><span class="code">${esc(h.code||"liste collée")}</span></button></li>`).join("");
+  ul.innerHTML=hist.map((h,i)=>`<li><button type="button" data-i="${i}"><span class="dot" style="background:${col[h.max]}"></span><span class="nm">${esc(h.name)}</span><span class="code">${esc(h.code||t("pasted_list"))}</span></button></li>`).join("");
   ul.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
     const h=hist[+b.dataset.i]; selectTab("scan");
     if(h.code) lookup(h.code); else render({name:h.name,ing:h.ing,type:"food"},{noHist:true});
@@ -947,31 +1324,31 @@ function renderHist(){
 /* ---------- Favoris et partage ---------- */
 function shareText(prod,r){
   const m=member().name;
-  const v=r.max===2?"À ÉVITER ✕":r.max===1?"Avec prudence !":"Bon ✓";
+  const v=r.max===2?t("sh_avoid"):r.max===1?t("sh_caution"):t("sh_good");
   const top=r.finds.filter(f=>f.lvl>0).slice(0,3).map(f=>"• "+f.name+(f.code?" ("+f.code+")":"")).join("\n");
-  return `MonScan Santé : ${prod.name}${prod.brand&&!prod.example?" ("+prod.brand+")":""}\nVerdict pour ${m} : ${v}`
-    + (top?`\n${top}`:"") + (prod.code&&!prod.example?`\nCode-barres : ${prod.code}`:"");
+  return `MonScan Santé : ${prod.name}${prod.brand&&!prod.example?" ("+prod.brand+")":""}\n${t("sh_verdict",{name:m,v})}`
+    + (top?`\n${top}`:"") + (prod.code&&!prod.example?`\n${t("sh_code",{code:prod.code})}`:"");
 }
 /* ---------- Lecture à voix haute ---------- */
 function speak(t){
   try{
     if(!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(t); u.lang="fr-FR"; u.rate=0.95;
-    const v=speechSynthesis.getVoices().find(v=>/^fr/i.test(v.lang)); if(v) u.voice=v;
+    const u=new SpeechSynthesisUtterance(t); u.lang={fr:"fr-FR",en:"en-GB",ar:"ar-SA"}[LANG]; u.rate=0.95;
+    const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith(LANG)); if(v) u.voice=v;
     speechSynthesis.speak(u);
   }catch(e){}
 }
 function speechFor(prod,r){
   const m=member().name;
-  const v=r.max===2?"à éviter":r.max===1?"à consommer avec prudence":"bon";
-  const pb=r.finds.filter(f=>f.lvl>0).slice(0,3).map(f=>f.name.replace(/\s*\(.*?\)/g,"")).join(", ");
-  return `${prod.name}. Pour ${m}, ce produit est ${v}.` + (pb?` Attention : ${pb}.`:"");
+  const v=r.max===2?t("sp_avoid"):r.max===1?t("sp_caution"):t("sp_good");
+  const pb=r.finds.filter(f=>f.lvl>0).slice(0,3).map(f=>(f.item||f.name).replace(/\s*\(.*?\)/g,"")).join(LANG==="ar"?"، ":", ");
+  return t("sp_full",{prod:prod.name,name:m,v}) + (pb?t("sp_attn",{list:pb}):"");
 }
 function dangerSpeech(prod,r){
   const pb=r.finds.filter(f=>f.lvl===2).slice(0,3)
-    .map(f=>f.name.replace(/^(Allergène|Dans votre liste|Traces possibles)\s*:\s*/,"").replace(/\s*\(.*?\)/g,"")).join(", ");
-  return `Attention ! Ce produit est à éviter pour ${member().name}.` + (pb?` Il contient : ${pb}.`:"");
+    .map(f=>(f.item||f.name).replace(/\s*\(.*?\)/g,"")).join(LANG==="ar"?"، ":", ");
+  return t("sp_danger",{name:member().name}) + (pb?t("sp_contains",{list:pb}):"");
 }
 function wireActions(prod,r){
   const sp=document.getElementById("speakBtn");
@@ -981,7 +1358,7 @@ function wireActions(prod,r){
     const i=favs.findIndex(f=>f.code===prod.code);
     if(i>=0) favs.splice(i,1); else favs.unshift({code:prod.code,name:prod.name,brand:prod.brand||"",max:r.max,who:member().name});
     store.set("pc_favs",favs); renderFavs();
-    const on=i<0; fb.setAttribute("aria-pressed",on); fb.textContent=on?"♥ Dans mes favoris":"♡ Garder";
+    const on=i<0; fb.setAttribute("aria-pressed",on); fb.textContent=on?t("fav_on"):t("fav_off");
     if(on) cachePut(prod);
   });
   const sb=document.getElementById("shareBtn"), box=document.getElementById("shareBox");
@@ -994,13 +1371,13 @@ function wireActions(prod,r){
     const enc=encodeURIComponent(txt);
     box.innerHTML=`<a class="btn" href="https://wa.me/?text=${enc}" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn" href="sms:?&body=${enc}">SMS</a>
-      <button type="button" class="btn" id="copyBtn">Copier le texte</button>
+      <button type="button" class="btn" id="copyBtn">${t("copy")}</button>
       <textarea id="shareTxt" readonly rows="4" style="flex-basis:100%">${esc(txt)}</textarea>`;
     box.hidden=false;
     document.getElementById("copyBtn").addEventListener("click",async e=>{
       const ta=document.getElementById("shareTxt");
-      try{ await navigator.clipboard.writeText(txt); e.target.textContent="Copié ✓"; }
-      catch(err){ ta.focus(); ta.select(); e.target.textContent="Texte sélectionné"; }
+      try{ await navigator.clipboard.writeText(txt); e.target.textContent=t("copied"); }
+      catch(err){ ta.focus(); ta.select(); e.target.textContent=t("selected"); }
     });
   });
 }
@@ -1009,7 +1386,7 @@ function renderFavs(){
   document.getElementById("favEmpty").hidden=favs.length>0;
   const col=["var(--ok)","var(--warn)","var(--bad)"];
   ul.innerHTML=favs.map((f,i)=>`<li style="display:flex;gap:6px"><button type="button" data-i="${i}"><span class="dot" style="background:${col[f.max]}"></span><span class="nm">${esc(f.name)}</span><span class="code">${esc(f.who||"")}</span></button>
-    <button type="button" data-del="${i}" aria-label="Retirer ${esc(f.name)} des favoris" style="width:auto;flex:none;justify-content:center">×</button></li>`).join("");
+    <button type="button" data-del="${i}" aria-label="${esc(t("remove_fav",{x:f.name}))}" style="width:auto;flex:none;justify-content:center">×</button></li>`).join("");
   ul.querySelectorAll("[data-i]").forEach(b=>b.addEventListener("click",()=>{selectTab("scan");lookup(favs[+b.dataset.i].code)}));
   ul.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{favs.splice(+b.dataset.del,1);store.set("pc_favs",favs);renderFavs()}));
 }
@@ -1028,25 +1405,24 @@ function loadScript(src){
 document.getElementById("ocrInput").addEventListener("change",async e=>{
   const f=e.target.files&&e.target.files[0]; e.target.value=""; if(!f) return;
   const st=document.getElementById("ocrState"), bar=document.getElementById("ocrBar"), msg=document.getElementById("ocrMsg");
-  st.hidden=false; bar.style.width="5%"; msg.textContent="Préparation de la lecture… (la première fois peut prendre 20 secondes)";
+  st.hidden=false; bar.style.width="5%"; msg.textContent=t("ocr_prep");
   try{
     await loadScript("https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js");
-    const res=await Tesseract.recognize(f,"fra",{logger:m=>{
-      if(m.status==="recognizing text"){ bar.style.width=Math.round(20+m.progress*80)+"%"; msg.textContent="Lecture du texte… "+Math.round(m.progress*100)+" %"; }
+    const res=await Tesseract.recognize(f,LANG==="en"?"eng":"fra",{logger:m=>{
+      if(m.status==="recognizing text"){ bar.style.width=Math.round(20+m.progress*80)+"%"; msg.textContent=t("ocr_reading",{p:Math.round(m.progress*100)}); }
     }});
-    let t=(res&&res.data&&res.data.text||"").replace(/\s*\n\s*/g," ").replace(/\s{2,}/g," ").trim();
-    const i=norm(t).indexOf("ingredient"); if(i>0) t=t.slice(i);
-    if(t.length<10) throw new Error("vide");
+    let txt=(res&&res.data&&res.data.text||"").replace(/\s*\n\s*/g," ").replace(/\s{2,}/g," ").trim();
+    const i=norm(txt).indexOf("ingredient"); if(i>0) txt=txt.slice(i);
+    if(txt.length<10) throw new Error("vide");
     bar.style.width="100%";
-    document.getElementById("pasteText").value=t;
-    msg.textContent="Texte lu. Corrigez-le si besoin, l'analyse est affichée au-dessus.";
-    const beauty=/\baqua\b|\bglycerin\b|\bparfum\b|\bcetearyl\b/i.test(t);
-    render({name:"Liste d'ingrédients photographiée",ing:t,type:beauty?"beauty":"food"});
+    document.getElementById("pasteText").value=txt;
+    msg.textContent=t("ocr_done");
+    const beauty=/\baqua\b|\bglycerin\b|\bparfum\b|\bcetearyl\b/i.test(txt);
+    render({name:t("ocr_name"),ing:txt,type:beauty?"beauty":"food"});
   }catch(err){
     st.hidden=false; bar.style.width="0";
     msg.textContent = /load/.test(String(err&&err.message)) ?
-      "La lecture de photo n'est pas disponible ici. Elle fonctionne sur la version installée sur votre téléphone (Netlify)." :
-      "Texte illisible. Reprenez la photo bien à plat, de près et éclairée, ou collez la liste à la main.";
+      t("ocr_unavail") : t("ocr_fail");
   }
 });
 
@@ -1054,15 +1430,15 @@ document.getElementById("ocrInput").addEventListener("change",async e=>{
 let wipeArmed=false;
 document.getElementById("wipeBtn").addEventListener("click",()=>{
   const b=document.getElementById("wipeBtn"), h=document.getElementById("wipeHint");
-  if(!wipeArmed){ wipeArmed=true; b.textContent="Oui, tout effacer"; h.textContent="Profils, favoris, historique et réglages seront supprimés de ce téléphone. Touchez encore pour confirmer."; h.hidden=false; return; }
+  if(!wipeArmed){ wipeArmed=true; b.textContent=t("wipe_confirm"); h.textContent=t("wipe_hint"); h.hidden=false; return; }
   try{ Object.keys(localStorage).filter(k=>k.startsWith("pc_")).forEach(k=>localStorage.removeItem(k)); }catch(e){}
-  fam={active:"m1",members:[{id:"m1",name:"Moi",tags:[],custom:[]}]}; syncActive();
+  fam={active:"m1",members:[{id:"m1",name:t("me"),tags:[],custom:[]}]}; syncActive();
   favs=[]; hist=[]; pcache={}; disp={big:false,hc:false}; applyDisp(); son=true;
   ["bigToggle","hcToggle","voiceToggle"].forEach(id=>document.getElementById(id).checked=false);
   document.getElementById("sonToggle").checked=true;
   dangerVoice=true; document.getElementById("dangerVoice").checked=true;
   current=null; renderProfil(); renderHist(); renderFavs(); renderWelcome();
-  wipeArmed=false; b.textContent="Effacer toutes mes données"; h.textContent="Toutes vos données ont été effacées.";
+  wipeArmed=false; b.textContent=t("wipe"); h.textContent=t("wipe_done");
 });
 
 /* ---------- Bouton d'installation ---------- */
@@ -1074,7 +1450,7 @@ document.getElementById("installX").addEventListener("click",()=>{ document.getE
 window.addEventListener("beforeinstallprompt",e=>{
   e.preventDefault(); installEvt=e;
   if(standalone||installDismissed()) return;
-  document.getElementById("installTxt").textContent="Installez MonScan Santé sur votre écran d'accueil, comme une vraie appli.";
+  const it=document.getElementById("installTxt"); it.dataset.i18n="install_android"; it.textContent=t("install_android");
   document.getElementById("installBtn").hidden=false;
   document.getElementById("installCard").hidden=false;
 });
@@ -1086,7 +1462,7 @@ document.getElementById("installBtn").addEventListener("click",async()=>{
 });
 window.addEventListener("appinstalled",()=>{ document.getElementById("installCard").hidden=true; });
 if(canInstallHere && !standalone && !installDismissed() && /iphone|ipad|ipod/i.test(navigator.userAgent)){
-  document.getElementById("installTxt").textContent="Pour l'installer : touchez Partager (le carré avec une flèche) puis « Sur l'écran d'accueil ».";
+  const it=document.getElementById("installTxt"); it.dataset.i18n="install_ios"; it.textContent=t("install_ios");
   document.getElementById("installCard").hidden=false;
 }
 
@@ -1121,37 +1497,40 @@ document.getElementById("codeForm").addEventListener("submit",e=>{
   if(/^[\d\s]+$/.test(v)) lookup(v); else searchByName(v);
 });
 async function searchByName(q){
-  if(q.length<2){showStatus("err","Tapez au moins 2 lettres du nom du produit.");return}
+  if(q.length<2){showStatus("err",t("err_2letters"));return}
   document.getElementById("result").innerHTML=""; current=null;
-  showStatus("info","Recherche de « "+q+" »…");
+  showStatus("info",t("searching_q",{q}));
   let list=null;
   try{
     const j=await getJSON("https://world.openfoodfacts.org/cgi/search.pl?search_terms="+encodeURIComponent(q)
-      +"&search_simple=1&action=process&json=1&page_size=12&lc=fr&cc=fr&fields=code,product_name,product_name_fr,brands,image_front_small_url",12000);
-    list=(j.products||[]).filter(p=>p.code&&(p.product_name_fr||p.product_name));
+      +"&search_simple=1&action=process&json=1&page_size=12&lc=fr&cc=fr&fields=code,product_name,product_name_fr,product_name_en,product_name_ar,brands,image_front_small_url",12000);
+    list=(j.products||[]).filter(p=>p.code&&(p["product_name_"+LANG]||p.product_name_fr||p.product_name));
   }catch(e){}
-  if(list===null){showStatus("err","Pas de connexion à la base de produits. Vérifiez votre connexion internet.");return}
-  if(!list.length){showStatus("err","Aucun produit trouvé pour « "+q+" ». Essayez un autre mot, ou scannez le code-barres.");return}
+  if(list===null){showStatus("err",t("no_conn2"));return}
+  if(!list.length){showStatus("err",t("no_result",{q}));return}
   hideStatus();
-  document.getElementById("result").innerHTML=`<div class="card"><h3>Résultats pour « ${esc(q)} »</h3><p class="hint">Touchez le bon produit pour l'analyser.</p>
+  document.getElementById("result").innerHTML=`<div class="card"><h3>${t("results_for",{q:esc(q)})}</h3><p class="hint">${t("tap_right")}</p>
     <div class="alts" style="background:transparent;padding:0">${list.map(p=>`
       <button type="button" class="alt" data-code="${esc(p.code)}">
         ${p.image_front_small_url?`<img src="${esc(p.image_front_small_url)}" alt="">`:`<span class="ph">◫</span>`}
-        <span class="nm"><b>${esc(p.product_name_fr||p.product_name)}</b><span>${esc(p.brands||"")}</span></span>
+        <span class="nm"><b>${esc(p["product_name_"+LANG]||p.product_name_fr||p.product_name)}</b><span>${esc(p.brands||"")}</span></span>
       </button>`).join("")}</div></div>`;
   document.querySelectorAll("#result .alt").forEach(b=>b.addEventListener("click",()=>lookup(b.dataset.code)));
 }
 const exBox=document.getElementById("examples");
-Object.entries(EXEMPLES).forEach(([c,p])=>{
-  const b=document.createElement("button");b.type="button";b.className="btn small";b.textContent=p.name;
-  b.addEventListener("click",()=>{document.getElementById("exBox").open=false;lookup(c)});
-  exBox.appendChild(b);
-});
+function renderExamples(){
+  exBox.innerHTML="";
+  Object.entries(EXEMPLES).forEach(([c,p])=>{
+    const b=document.createElement("button");b.type="button";b.className="btn small";b.textContent=exname(c,p.name);
+    b.addEventListener("click",()=>{document.getElementById("exBox").open=false;lookup(c)});
+    exBox.appendChild(b);
+  });
+}
 document.getElementById("pasteBtn").addEventListener("click",()=>{
   const t=document.getElementById("pasteText").value.trim();
-  if(!t){showStatus("err","Collez d'abord la liste d'ingrédients.");return}
+  if(!t){showStatus("err",window.t("paste_first"));return}
   const beauty=/\baqua\b|\bglycerin\b|\bparfum\b|\bcetearyl\b/i.test(t);
-  render({name:"Liste d'ingrédients collée",ing:t,type:beauty?"beauty":"food"});
+  render({name:window.t("pasted_name"),ing:t,type:beauty?"beauty":"food"});
 });
 const sonT=document.getElementById("sonToggle");
 sonT.checked=son;
@@ -1161,7 +1540,7 @@ dvT.checked=dangerVoice;
 dvT.addEventListener("change",()=>{dangerVoice=dvT.checked;store.set("pc_dvoice",dangerVoice)});
 document.getElementById("testVoice").addEventListener("click",()=>{
   alertSound(2,true);
-  setTimeout(()=>speak(`Attention ! Ce produit est à éviter pour ${member().name}. Il contient : nitrites, aspartame.`),1100);
+  setTimeout(()=>speak(t("sp_danger",{name:member().name})+t("sp_contains",{list:t("sp_test_list")})),1100);
 });
 if(!("speechSynthesis" in window)){ dvT.disabled=true; document.getElementById("testVoice").disabled=true; }
 document.querySelectorAll("[data-test]").forEach(b=>b.addEventListener("click",()=>alertSound(+b.dataset.test,true)));
@@ -1171,7 +1550,7 @@ const FORMATS = () => (window.Html5QrcodeSupportedFormats? [Html5QrcodeSupported
 document.getElementById("photoInput").addEventListener("change",async e=>{
   const f=e.target.files&&e.target.files[0]; e.target.value=""; if(!f) return;
   stopCamera();
-  showStatus("info","Lecture du code-barres…");
+  showStatus("info",t("reading_bc"));
   let code=null;
   try{
     if("BarcodeDetector" in window){
@@ -1183,7 +1562,7 @@ document.getElementById("photoInput").addEventListener("change",async e=>{
     try{ const h=new Html5Qrcode("hiddenReader",{formatsToSupport:FORMATS(),verbose:false}); code=await h.scanFile(f,false); }catch(err){}
   }
   if(code){document.getElementById("codeInput").value=code; lookup(code)}
-  else showStatus("err","Code-barres illisible. Reprenez la photo de plus près, bien à plat et éclairée, ou tapez le numéro.");
+  else showStatus("err",t("bc_fail"));
 });
 
 /* ---------- Code-barres : caméra en direct ---------- */
@@ -1193,7 +1572,7 @@ function setCamUI(on){
   camOn=on; camBox.hidden=!on;
   const b=document.getElementById("camBtn");
   b.classList.toggle("stop",on);
-  document.getElementById("camLabel").textContent=on?"Arrêter la caméra":"Scanner avec la caméra";
+  const cl=document.getElementById("camLabel"); cl.dataset.i18n=on?"cam_stop":"cam_start"; cl.textContent=t(cl.dataset.i18n);
 }
 async function stopCamera(){
   clearTimeout(timer); timer=null;
@@ -1210,11 +1589,11 @@ function onCode(txt){
 function camError(e){
   const s=String((e&&e.name)||"")+" "+String((e&&e.message)||e||"");
   let m;
-  if(/NotAllowed|Permission|denied/i.test(s)) m="L'accès à la caméra est refusé. Touchez le cadenas à côté de l'adresse (ou les réglages du navigateur), autorisez la caméra, puis rechargez la page.";
-  else if(/NotFound|Overconstrained|no camera|Requested device not found/i.test(s)) m="Aucune caméra trouvée sur cet appareil. Utilisez « Prendre une photo » ou « Taper le numéro ».";
-  else if(/NotReadable|in use|Could not start/i.test(s)) m="La caméra est déjà utilisée par une autre application. Fermez-la, puis réessayez.";
-  else if(/Secure|https/i.test(s)) m="La caméra ne marche que sur une adresse sécurisée (https://…).";
-  else m="La caméra n'a pas pu démarrer ("+s.trim().slice(0,80)+"). Utilisez « Prendre une photo » : le téléphone ouvrira l'appareil photo.";
+  if(/NotAllowed|Permission|denied/i.test(s)) m=t("cam_denied");
+  else if(/NotFound|Overconstrained|no camera|Requested device not found/i.test(s)) m=t("cam_none");
+  else if(/NotReadable|in use|Could not start/i.test(s)) m=t("cam_busy");
+  else if(/Secure|https/i.test(s)) m=t("cam_https");
+  else m=t("cam_other",{e:s.trim().slice(0,80)});
   showStatus("err",m);
 }
 async function startNative(){
@@ -1232,7 +1611,7 @@ async function startNative(){
   loop();
 }
 async function startH5(){
-  if(!window.Html5Qrcode) throw new Error("Le module de scan n'a pas pu se charger. Vérifiez votre connexion internet puis rechargez la page.");
+  if(!window.Html5Qrcode) throw new Error(t("scan_module"));
   setCamUI(true);
   h5=new Html5Qrcode("reader",{formatsToSupport:FORMATS(),verbose:false,experimentalFeatures:{useBarCodeDetectorIfSupported:true}});
   await h5.start({facingMode:"environment"},{fps:12,aspectRatio:1.333,
@@ -1243,8 +1622,8 @@ document.getElementById("camBtn").addEventListener("click",async()=>{
   unlockAudio();
   if(camOn){stopCamera();return}
   hideStatus();
-  if(window.isSecureContext===false){showStatus("err","La caméra ne marche que sur une adresse sécurisée (https://…). Ouvrez l'application depuis son adresse Netlify.");return}
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){showStatus("err","Ce navigateur ne donne pas accès à la caméra ici. Utilisez « Prendre une photo » : le téléphone ouvrira l'appareil photo.");return}
+  if(window.isSecureContext===false){showStatus("err",t("cam_https"));return}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){showStatus("err",t("cam_nobrowser"));return}
   let native=false;
   try{ if("BarcodeDetector" in window){ const f=await BarcodeDetector.getSupportedFormats(); native=f.includes("ean_13"); } }catch(e){}
   try{
@@ -1257,8 +1636,28 @@ document.getElementById("camBtn").addEventListener("click",async()=>{
 });
 document.addEventListener("visibilitychange",()=>{if(document.hidden) stopCamera();});
 
+/* ---------- Changer de langue ---------- */
+function applyStatic(){
+  const h=document.documentElement; h.lang=LANG; h.dir=LANG==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent=t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>{ el.placeholder=t(el.dataset.i18nPh); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ el.setAttribute("aria-label",t(el.dataset.i18nAria)); });
+  document.getElementById("legalNote").hidden = LANG==="fr";
+  ["langSel","langSel2"].forEach(id=>{ document.getElementById(id).value=LANG; });
+}
+function setLang(l){
+  if(!["fr","en","ar"].includes(l)||l===LANG) return;
+  LANG=l; store.set("pc_lang",l);
+  fam.members.forEach(m=>{ if(["Moi","Me","أنا"].includes(m.name)) m.name=t("me"); }); saveFam();
+  try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
+  applyStatic(); renderExamples(); renderProfil(); renderHist(); renderFavs(); hideStatus();
+  if(current){ if(current.example) current.name=exname(current.code,EXEMPLES[current.code].name); render(current,{noHist:true,silent:true}); }
+  else renderWelcome();
+}
+["langSel","langSel2"].forEach(id=>document.getElementById(id).addEventListener("change",e=>setLang(e.target.value)));
+
 /* ---------- Démarrage ---------- */
-renderProfil(); renderHist(); renderFavs(); renderWelcome();
+applyStatic(); renderExamples(); renderProfil(); renderHist(); renderFavs(); renderWelcome();
 </script>
 
 </body>
