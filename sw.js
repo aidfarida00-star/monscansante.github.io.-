@@ -1,5 +1,5 @@
 // MonScan Santé : garde l'application disponible sans internet.
-const CACHE = "monscan-v11";
+const CACHE = "monscan-v13";
 const SHELL = [
   "./",
   "./index.html",

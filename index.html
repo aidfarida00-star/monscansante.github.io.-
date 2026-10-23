@@ -81,6 +81,7 @@ html[lang="ar"] .brand{text-align:start}
 .vpick output{font-variant-numeric:tabular-nums;min-width:3ch;text-align:end}
 .ns.hb{padding:6px 14px;font-weight:800;font-size:.92rem;color:#fff}
 .hb-label{background:var(--ok)}.hb-no{background:var(--bad)}.hb-check{background:var(--warn);color:#1c1300!important}.hb-none{background:var(--sunk);color:var(--ink)!important}
+.vunk{background:var(--muted)}
 .danger{border-color:var(--bad)!important;color:var(--bad)!important;background:transparent!important}
 .actions .btn[aria-pressed="true"]{background:var(--c1);border-color:var(--c1);color:#fff}
 .sharebox{display:flex;flex-wrap:wrap;gap:8px}
@@ -471,7 +472,7 @@ label.chip input:checked+span::before{content:"✓"}
 
   <p class="disclaimer" data-i18n="disclaimer">MonScan Santé informe à partir des ingrédients déclarés (bases collaboratives Open Food Facts et Open Beauty Facts). Ce n'est pas un avis médical : en cas de doute, demandez à votre médecin ou pharmacien.</p>
   <p class="disclaimer footlinks"><button type="button" data-info="mentions" data-i18n="legal_link">Mentions légales</button> · <button type="button" data-info="confidentialite" data-i18n="privacy">Confidentialité</button></p>
-  <p class="disclaimer"><b id="appVersion">Version 1.7 · Halal</b></p>
+  <p class="disclaimer"><b id="appVersion">Version 1.9</b></p>
   <p class="disclaimer" data-i18n="copyright">© 2026 MonScan Santé. Tous droits réservés. Toute copie ou revente de l'application, de son nom, de son logo ou de ses textes est interdite sans autorisation.</p>
 </main>
 
@@ -583,6 +584,11 @@ fr:{
  voice_wait:"Recherche des voix du téléphone…",
  upd_txt:"Une nouvelle version de MonScan Santé est disponible.",
  upd_btn:"Mettre à jour",
+ pharma_med:"Ce code commence par 34009 : c'est un médicament. MonScan Santé n'analyse pas les médicaments. Pour savoir s'il vous convient, demandez à votre pharmacien ou à votre médecin.",
+ pharma_para:"Ce code commence par 3401 : c'est un produit de pharmacie (complément alimentaire, soin…). Ces produits sont rarement dans la base Open Food Facts. Photographiez la liste des ingrédients ci-dessous pour l'analyser.",
+ v_unknown:"Analyse impossible",
+ v_unknown_sub:"La liste d'ingrédients manque dans la base. Photographiez-la ci-dessous pour l'analyser.",
+ busy:"La base de produits ne répond pas pour le moment (elle est parfois surchargée). Réessayez dans quelques secondes, ou photographiez la liste d'ingrédients ci-dessous.",
  halal_pork_n:"Porc",
  halal_pork_m:"Contient du porc ou un dérivé du porc : non halal.",
  halal_gelp_n:"Gélatine de porc",
@@ -713,6 +719,11 @@ en:{
  voice_wait:"Looking for the phone's voices…",
  upd_txt:"A new version of MonScan Santé is available.",
  upd_btn:"Update",
+ pharma_med:"This code starts with 34009: it's a medicine. MonScan Santé doesn't analyze medicines. To know whether it suits you, ask your pharmacist or doctor.",
+ pharma_para:"This code starts with 3401: it's a pharmacy product (food supplement, skincare…). These products are rarely in the Open Food Facts database. Photograph the ingredient list below to analyze it.",
+ v_unknown:"Can't analyze",
+ v_unknown_sub:"The ingredient list is missing from the database. Photograph it below to analyze it.",
+ busy:"The product database isn't responding right now (it is sometimes overloaded). Try again in a few seconds, or photograph the ingredient list below.",
  halal_pork_n:"Pork",
  halal_pork_m:"Contains pork or a pork derivative: not halal.",
  halal_gelp_n:"Pork gelatine",
@@ -843,6 +854,11 @@ ar:{
  voice_wait:"جارٍ البحث عن أصوات الهاتف…",
  upd_txt:"يتوفّر إصدار جديد من MonScan Santé.",
  upd_btn:"تحديث",
+ pharma_med:"يبدأ هذا الرمز بـ34009: إنه دواء. لا يحلّل MonScan Santé الأدوية. لمعرفة ما إذا كان يناسبك، اسأل الصيدلي أو طبيبك.",
+ pharma_para:"يبدأ هذا الرمز بـ3401: إنه منتج صيدلية (مكمّل غذائي، منتج عناية…). نادراً ما تكون هذه المنتجات في قاعدة Open Food Facts. صوّر قائمة المكوّنات أدناه لتحليلها.",
+ v_unknown:"تعذّر التحليل",
+ v_unknown_sub:"قائمة المكوّنات غير موجودة في القاعدة. صوّرها أدناه لتحليلها.",
+ busy:"قاعدة المنتجات لا تستجيب حالياً (قد تكون مزدحمة أحياناً). حاول مجدداً بعد بضع ثوانٍ، أو صوّر قائمة المكوّنات أدناه.",
  halal_pork_n:"لحم الخنزير",
  halal_pork_m:"يحتوي على لحم الخنزير أو أحد مشتقاته: غير حلال.",
  halal_gelp_n:"جيلاتين الخنزير",
@@ -1222,10 +1238,20 @@ function alertSound(lvl,force){
 }
 
 /* ---------- Recherche produit ---------- */
+/* Une réponse du serveur (même « introuvable ») n'est pas une coupure d'internet */
 async function getJSON(url,ms){
-  const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),ms||9000);
-  try{const r=await fetch(url,{signal:ctl.signal}); if(!r.ok) throw new Error("http "+r.status); return await r.json();}
-  finally{clearTimeout(t)}
+  const ctl=new AbortController(); const timer=setTimeout(()=>ctl.abort(),ms||15000);
+  try{
+    const r=await fetch(url,{signal:ctl.signal});
+    let j=null; try{ j=await r.json(); }catch(e){}
+    if(!r.ok && !(j&&typeof j==="object")){ const err=new Error("http "+r.status); err.http=r.status; throw err; }
+    if(j&&typeof j==="object") Object.defineProperty(j,"__http",{value:r.status,enumerable:false});
+    return j||{};
+  } finally{ clearTimeout(timer); }
+}
+async function getJSONretry(url,ms){
+  try{ return await getJSON(url,ms); }
+  catch(e){ if(e&&e.http&&e.http<500&&e.http!==429) throw e; await new Promise(r=>setTimeout(r,900)); return await getJSON(url,ms); }
 }
 const num=v=>(v===undefined||v===null||v==="")?null:Number(v);
 const FIELDS="code,product_name,product_name_fr,product_name_en,product_name_ar,brands,ingredients_text_fr,ingredients_text,additives_tags,allergens_tags,traces_tags,nutriments,image_front_small_url,nutriscore_grade,nova_group,labels_tags";
@@ -1288,17 +1314,28 @@ async function lookup(code){
   if(EXEMPLES[code]){render({code,...EXEMPLES[code],name:exname(code,EXEMPLES[code].name),example:true});return}
   document.getElementById("result").innerHTML="";
   showStatus("info",t("searching_code",{code}));
-  let reached=false;
+  let reached=false, busy=false;
   for(const [type,base] of SOURCES){
     try{
-      const j=await getJSON(base+"/api/v2/product/"+code+".json?fields="+FIELDS+",categories_tags"); reached=true;
+      const j=await getJSONretry(base+"/api/v2/product/"+code+".json?fields="+FIELDS+",categories_tags"); reached=true;
+      if(j.__http===429||j.__http>=500) busy=true;
       if(j && j.status===1 && j.product){ const p=toProd(j.product,type,code); cachePut(p); render(p); return; }
-    }catch(e){}
+    }catch(e){ if(e&&e.http){ reached=true; if(e.http===429||e.http>=500) busy=true; } }
   }
+  if(busy && pcache[code]){ render({...pcache[code],offline:true}); showStatus("info",t("offline")); return; }
+  if(busy){ showStatus("err",t("busy")); return; }
   if(!reached && pcache[code]){
     render({...pcache[code],offline:true});
     showStatus("info",t("offline"));
     return;
+  }
+  if(reached && /^34009/.test(code)){ showStatus("err",t("pharma_med")); return; }
+  if(reached && /^340[01]/.test(code)){
+    showStatus("err",t("pharma_para"));
+    const s=document.getElementById("status"), a=document.createElement("a");
+    a.href="https://world.openfoodfacts.org/cgi/product.pl?type=add&code="+code; a.target="_blank"; a.rel="noopener";
+    a.textContent=t("add_off"); s.appendChild(document.createElement("br")); s.appendChild(a);
+    document.getElementById("pasteBox").open=true; return;
   }
   if(reached){
     showStatus("err",t("not_found",{code}));
@@ -1307,7 +1344,7 @@ async function lookup(code){
     a.textContent=t("add_off");
     s.appendChild(document.createElement("br")); s.appendChild(a);
   }
-  else showStatus("err",t("no_conn"));
+  else showStatus("err",navigator.onLine===false?t("no_conn"):t("busy"));
   document.getElementById("pasteBox").open=true;
 }
 
@@ -1334,10 +1371,11 @@ function render(prod,opts){
   current=prod; hideStatus();
   const r=analyse(prod);
   const pnames=profil.map(p=>pname(p)).join(LANG==="ar"?"، ":", ");
-  const sym = r.max===2?"✕":r.max===1?"!":"✓";
-  const vt = r.max===2?t("v_avoid"):r.max===1?t("v_caution"):t("v_good",{name:esc(member().name)});
+  const noData = !String(prod.ing||"").trim() && !r.finds.length;
+  const sym = noData?"?":r.max===2?"✕":r.max===1?"!":"✓";
+  const vt = noData?t("v_unknown"):r.max===2?t("v_avoid"):r.max===1?t("v_caution"):t("v_good",{name:esc(member().name)});
   const tot=profil.length+custom.length;
-  const vs = !tot?t("v_noprofile",{name:esc(member().name)}):t("v_for",{name:esc(member().name),list:esc([pnames,custom.length?t("perso_list"):""].filter(Boolean).join(LANG==="ar"?"، ":", "))});
+  const vs = noData?t("v_unknown_sub"):!tot?t("v_noprofile",{name:esc(member().name)}):t("v_for",{name:esc(member().name),list:esc([pnames,custom.length?t("perso_list"):""].filter(Boolean).join(LANG==="ar"?"، ":", "))});
   const nut=prod.nut;
   const bar=(v,hi,mid)=>{if(v==null) return ""; const pct=Math.min(100,v/hi*100); const col=v>hi?"var(--bad)":v>mid?"var(--warn)":"var(--ok)"; return `<div class="bar"><i style="width:${Math.max(pct,3)}%;background:${col}"></i></div>`};
   const nutHtml = nut && (nut.sugars!=null||nut.salt!=null||nut.sat!=null) ? `
@@ -1373,7 +1411,7 @@ function render(prod,opts){
     </div><div class="sharebox" id="shareBox" hidden></div>`;
   document.getElementById("result").innerHTML=`
   <article class="result" aria-live="polite">
-    <div class="verdict v${r.max}"><span class="sym" aria-hidden="true">${sym}</span><div><div class="vt">${vt}</div><small>${vs}</small></div></div>
+    <div class="verdict ${noData?"vunk":"v"+r.max}"><span class="sym" aria-hidden="true">${sym}</span><div><div class="vt">${vt}</div><small>${vs}</small></div></div>
     <div class="r-head">
       ${prod.img?`<img src="${esc(prod.img)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'?'}))">`:`<div class="ph">${prod.type==="beauty"?"✿":"◫"}</div>`}
       <div class="r-meta">
@@ -1396,7 +1434,8 @@ function render(prod,opts){
   </article>`;
   wireActions(prod,r,vt);
   loadAlternatives(prod,r);
-  if(!opts.silent){
+  if(noData) document.getElementById("pasteBox").open=true;
+  if(!opts.silent && !noData){
     alertSound(r.max);
     if(disp.voice) setTimeout(()=>speak(speechFor(prod,r)), r.max===2?1100:700);
     else if(dangerVoice && r.max===2) setTimeout(()=>speak(dangerSpeech(prod,r)), son?1100:100);
@@ -1745,11 +1784,11 @@ async function searchByName(q){
   showStatus("info",t("searching_q",{q}));
   let list=null;
   try{
-    const j=await getJSON("https://world.openfoodfacts.org/cgi/search.pl?search_terms="+encodeURIComponent(q)
+    const j=await getJSONretry("https://world.openfoodfacts.org/cgi/search.pl?search_terms="+encodeURIComponent(q)
       +"&search_simple=1&action=process&json=1&page_size=12&lc=fr&cc=fr&fields=code,product_name,product_name_fr,product_name_en,product_name_ar,brands,image_front_small_url",12000);
     list=(j.products||[]).filter(p=>p.code&&(p["product_name_"+LANG]||p.product_name_fr||p.product_name));
   }catch(e){}
-  if(list===null){showStatus("err",t("no_conn2"));return}
+  if(list===null){showStatus("err",navigator.onLine===false?t("no_conn2"):t("busy"));return}
   if(!list.length){showStatus("err",t("no_result",{q}));return}
   hideStatus();
   document.getElementById("result").innerHTML=`<div class="card"><h3>${t("results_for",{q:esc(q)})}</h3><p class="hint">${t("tap_right")}</p>
